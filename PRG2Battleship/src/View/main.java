@@ -3,20 +3,22 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Main;
+package View;
 
 /**
  *
- * @author Damir Hodzic
+ * @author Ueli Steimen
  */
-public class Main {
-
-    /**
-     * @param args the command line arguments
-     */
+public class main {
+  
+    
+    public main(){
+    
+    }
+ 
     public static void main(String[] args) {
-        
-        // TODO code application logic here
+        Grid grid = new Grid();
+    
     }
     
 }

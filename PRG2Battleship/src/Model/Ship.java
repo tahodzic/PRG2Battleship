@@ -7,8 +7,8 @@ package Model;
 
 /**
  *
- * @author eliagrifo
+ * @author Damir Hodzic
  */
 public class Ship {
-    
+    //test
 }

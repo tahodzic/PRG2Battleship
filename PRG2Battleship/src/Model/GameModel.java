@@ -5,6 +5,7 @@
  */
 package Model;
 
+import java.util.ArrayList;
 import java.util.Observable;
 import java.util.Random;
 
@@ -19,27 +20,67 @@ public class GameModel extends Observable{
         PLAY,
         FINISHED
       }
-    public gameState state;
+    private gameState state;
+    private boolean shipInCreation = false;
+    
+    //count for ship creation, helps decide when to start with new ship
+    // or to keep filling the old ship
+    private int fieldCount = 0;
     private IOpponent compOpponent, networkOpponent, playerOne;
     private boolean playerOneTurn = false;
-
-
+    private GameGrid gameGrid;
+    private ArrayList<Ship> ships = new ArrayList<Ship>();
+    private Ship ship;
+    
+            
     public GameModel(){
       playerOne = new Player();       
       state = gameState.SELECTING_OPPONENT;
       playerOneTurn = new Random().nextBoolean();     
-      //Initialize field, per default every value is false
+      //Initialize gameGrid
       
  
     }
 
     public void instantiateComputerOpponent(){
       compOpponent = new ComputerOpponent();
+      state = gameState.PREPARING_GRID;
     }
     
     public void instantiateNetworkOpponent(){
       networkOpponent = new NetworkOpponent();
     }
     
+    public void runGame(int length, int posX, int posY){
+        switch (state){
+            case PREPARING_GRID:
+                if(!shipInCreation){
+                    ship = new Ship(length);
+                    ship.addField(new Field(posX, posY));
+                    //gameGrid.addShip (still in implementation)
+                    ships.add(ship);
+                    fieldCount = length - 1;
+                    shipInCreation = true;
+                }
+                else {
+                    ship.addField(new Field(posX, posY));
+                    //gameGrid.addShip (still in implementation)
+                    fieldCount--;
+                    if(fieldCount == 0)
+                        shipInCreation = false;
+                }
+                
+                break;
+            case PLAY: 
+                if(playerOneTurn){
+                    //until here
+                }
+                break;
+            case FINISHED: break;
+            default: break;
+            
+            
+        }
+    }
 
 }

@@ -62,15 +62,4 @@ public class Ship {
     public boolean getIsAlive() {
         return this.isAlive;
     }
-    
-    public static void main(String[] args) {
-        Ship ship = new Ship(2);
-        Field field1 = new Field(3,1);
-        Field field2 = new Field(3,2);
-        Field field3 = new Field(3,3);
-        ship.addField(field1);
-        ship.addField(field2);
-        ship.addField(field3);
-        System.out.println(ship.fields.size());
-    }
 }

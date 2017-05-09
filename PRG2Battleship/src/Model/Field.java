@@ -13,20 +13,16 @@ import java.util.ArrayList;
  */
 public class Field {
     
-    public enum FieldState {
-    
-        WATER, SHIP, MISSED, HIT;
-    
-    }
+    public enum FieldState { WATER, SHIP, MISSED, HIT}
     
     private int x;
     private int y;
     private FieldState state;
-    private static final ArrayList<Field> usedFields = new ArrayList<>();
     
     public Field(int x, int y) {
         setX(x);
         setY(y);
+        state = FieldState.WATER;
     }
     
     /**
@@ -92,11 +88,11 @@ public class Field {
      * @return Returns true if the field is empty
      */
     public boolean isEmptyField() {
-        return !(this.containsField(usedFields));
+        return (this.state == FieldState.WATER);
     }
     
-    public boolean addField(Field field) {
-        return usedFields.add(field);
+    public void setState(FieldState state) {
+        this.state = state;
     }
     
     public void setX(int x) {

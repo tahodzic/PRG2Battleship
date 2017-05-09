@@ -6,6 +6,7 @@
 package Model;
 
 import java.util.ArrayList;
+import Model.Field.FieldState;
 
 /**
  *
@@ -30,7 +31,7 @@ public class Ship {
     public boolean addField(Field field) {
         if(fields.size() < length && isFieldValid(field)) {
             fields.add(field);
-            field.addField(field);
+            field.setState(FieldState.SHIP);
             return true;
         }
         return false;
@@ -67,21 +68,6 @@ public class Ship {
     }
     
     public static void main(String[] args) {
-        Ship ship = new Ship(5);
-        Ship s = new Ship(2);
-        Field field1 = new Field(3,1);
-        Field field2 = new Field(3,2);
-        Field field3 = new Field(2,2);
-        Field field4 = new Field(3,4);
-        Field field5 = new Field(3,3);
-        ship.addField(field1);
-        ship.addField(field2);
-        ship.addField(field3);
-        ship.addField(field4);
-        s.addField(field4);
-        s.addField(field5);
-        s.addField(field2);
-        System.out.println(ship.fields.size());
-        System.out.println(s.fields.size());
+        GameGrid g = new GameGrid(true);
     }
 }

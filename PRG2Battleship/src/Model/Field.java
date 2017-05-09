@@ -13,8 +13,16 @@ import java.util.ArrayList;
  */
 public class Field {
     
-    public int x;
-    public int y;
+    public enum FieldState {
+    
+        WATER, SHIP, MISSED, HIT;
+    
+    }
+    
+    private int x;
+    private int y;
+    private FieldState state;
+    private static final ArrayList<Field> usedFields = new ArrayList<>();
     
     public Field(int x, int y) {
         setX(x);
@@ -22,10 +30,13 @@ public class Field {
     }
     
     /**
-     * Compares if two fields are next to each other
+     * Compares if two fields are next to each other and not already used
      * @return Returns true if fields are next to each other
      */
     public boolean isNextTo(Field field) {
+        if(!field.isEmptyField()) {
+            return false;
+        }
         if(field.x == this.x && (field.y+1 == this.y || field.y-1 == this.y)) {
             return true;
         } else if(field.y == this.y && (field.x+1 == this.x || field.x-1 == this.x)) {
@@ -35,7 +46,7 @@ public class Field {
     }
     
     /**
-     * Compares if a field is next to a collection of fields
+     * Compares if a field is next to a collection of fields but not already used
      * @return Returns true if field is next to one of the input fields
      */
     public boolean isNextTo(ArrayList<Field> fields) {
@@ -53,6 +64,39 @@ public class Field {
      */
     public boolean isInSameLine(Field field) {
         return (field.x == this.x || field.y == this.y);
+    }
+    
+    /**
+     * Compares if two fields have the same x and y coordinates
+     * @return Returns true if the fields are in the same position
+     */
+    public boolean isSameField(Field field) {
+        return (field.x == this.x && field.y == this.y);
+    }
+    
+    /**
+     * Checks if a field is already in the list
+     * @return Returns true if the same field is already in the list
+     */
+    public boolean containsField(ArrayList<Field> fields) {
+        for(Field field : fields) {
+            if(this.isSameField(field)) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    /**
+     * Checks if a field is empty (not already in use)
+     * @return Returns true if the field is empty
+     */
+    public boolean isEmptyField() {
+        return !(this.containsField(usedFields));
+    }
+    
+    public boolean addField(Field field) {
+        return usedFields.add(field);
     }
     
     public void setX(int x) {

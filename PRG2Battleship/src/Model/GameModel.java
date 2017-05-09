@@ -41,6 +41,5 @@ public class GameModel extends Observable{
       networkOpponent = new NetworkOpponent();
     }
     
-    public void makeTurn()
 
 }

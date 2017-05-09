@@ -10,5 +10,9 @@ package Model;
  * @author Damir Hodzic
  */
 public class NetworkOpponent implements IOpponent{
+
+    @Override
+    public void placeShip(Ship ship) {
+    }
     
 }

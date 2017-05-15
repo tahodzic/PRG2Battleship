@@ -60,23 +60,6 @@ public class GameGrid {
         return null;
     }
     
-    public static void main(String[] args) {
-        GameGrid g = new GameGrid(true);
-        Field f1 = g.getField(4, 4);
-        Field f2 = g.getField(4, 3);
-        Field f3 = g.getField(4, 6);
-        Ship s = new Ship(4);
-        g.addShip(s);
-        s.addField(4, 4, g);
-        s.addField(4, 3, g);
-        s.addField(4, 2, g);
-        
-        f1.attackField(g);
-        f2.attackField(g);
-        f3.attackField(g);
-        System.out.println(f1.getState());
-        System.out.println(s.getIsAlive());
-        
-    }
+    
     
 }

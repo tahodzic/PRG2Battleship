@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class Field {
     
-    public enum FieldState { WATER, SHIP, MISSED, HIT}
+    public enum FieldState {WATER, SHIP, MISSED, HIT}
     
     private int x;
     private int y;
@@ -22,7 +22,7 @@ public class Field {
     public Field(int x, int y) {
         setX(x);
         setY(y);
-        state = FieldState.WATER;
+        setState(FieldState.WATER);
     }
     
     /**
@@ -47,7 +47,7 @@ public class Field {
      */
     public boolean isNextTo(ArrayList<Field> fields) {
         for (Field field : fields) {
-            if(this.isNextTo(field)) {
+            if(field.isNextTo(this)) {
                 return true;
             }
         }
@@ -103,11 +103,19 @@ public class Field {
         this.y = y;
     }
     
+    public FieldState getState() {
+        return this.state;
+    }
+    
     public int getX() {
         return this.x;
     }
     
     public int getY() {
         return this.y;
+    }
+    
+    public String getName() {
+        return ("field"+x+""+y);
     }
 }

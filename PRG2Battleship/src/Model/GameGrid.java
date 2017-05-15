@@ -13,7 +13,7 @@ import java.util.ArrayList;
  */
 public class GameGrid {
     
-    private final static Field[][] field = new Field[7][7];
+    private final Field[][] gameFields = new Field[7][7];
     private final ArrayList<Ship> ships;
     
     // true if the grid is the primary grid not the tracking/opponent grid
@@ -28,16 +28,22 @@ public class GameGrid {
     public void initializeGrid() {
         for(int i = 0; i < 7; i++) {
             for(int j = 0; j < 7; j++) {
-                field[i][j] = new Field(i, j);
+                gameFields[i][j] = new Field(i+1, j+1);
             }
         }
     }
     
     public Field getField(int x, int y) {
-        return field[x][y];
+        return gameFields[x-1][y-1];
     }
     
     public boolean addShip(Ship ship) {
         return (ships.add(ship));
     }
+    
+    public boolean getPrimaryGrid() {
+        return this.primaryGrid;
+    }
+    
+    
 }

@@ -28,7 +28,8 @@ public class Ship {
      * Adds field to ship
      * @return Returns true if the field was added successfully
      */
-    public boolean addField(Field field) {
+    public boolean addField(int x, int y, GameGrid g) {
+        Field field = g.getField(x, y);
         if(fields.size() < length && isFieldValid(field)) {
             fields.add(field);
             field.setState(FieldState.SHIP);
@@ -37,6 +38,10 @@ public class Ship {
         return false;
     }
     
+    /**
+     * Checks if field isn't already set and is next to already set fields
+     * @return Returns true if the field can be set
+     */
     public boolean isFieldValid(Field field) {
         int i = fields.size();
         switch(i) {
@@ -67,7 +72,14 @@ public class Ship {
         return this.isAlive;
     }
     
-    public static void main(String[] args) {
-        GameGrid g = new GameGrid(true);
+    public ArrayList<Field> getFields() {
+        return this.fields;
+    }
+    
+    // For testing purpose
+    public void printFields() {
+        for(Field f: fields) {
+            System.out.println(f.getX()+", " +f.getY());
+        }
     }
 }

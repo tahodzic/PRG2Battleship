@@ -20,8 +20,9 @@ public class GameModel extends Observable{
         PLAY,
         FINISHED
       }
+    
     private gameState state;
-    private boolean shipInCreation = false;
+    private boolean shipInCreation = false, netPlay = false;
     
     //count for ship creation, helps decide when to start with new ship
     // or to keep filling the old ship
@@ -49,6 +50,7 @@ public class GameModel extends Observable{
     
     public void instantiateNetworkOpponent(){
       networkOpponent = new NetworkOpponent();
+      netPlay = true;
     }
     
     public void runGame(int length, int posX, int posY){
@@ -57,24 +59,32 @@ public class GameModel extends Observable{
                 if(!shipInCreation){
                     ship = new Ship(length);
                     ship.addField(new Field(posX, posY));
-                    //gameGrid.addShip (still in implementation)
+                    gameGrid.addShip (ship);
                     ships.add(ship);
                     fieldCount = length - 1;
                     shipInCreation = true;
                 }
                 else {
-                    ship.addField(new Field(posX, posY));
-                    //gameGrid.addShip (still in implementation)
+                    //ship.addField();
+                    gameGrid.addShip (ship);
                     fieldCount--;
                     if(fieldCount == 0)
+                        //one ship finished
                         shipInCreation = false;
                 }
                 
+                //change to play state
+                if(length == -1){
+                    state = gameState.PLAY;
+                }
                 break;
             case PLAY: 
-                if(playerOneTurn){
-                    //until here
+                if(netPlay){
+                    if(playerOneTurn){
+                        
+                    }
                 }
+
                 break;
             case FINISHED: break;
             default: break;

@@ -11,6 +11,7 @@ package Model;
  */
 public class Player implements IOpponent{
 
+   
     @Override
     public void placeShip(Ship ship) {
     }

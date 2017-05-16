@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package Main;
+import Model.*;
+import View.*;
 
 /**
  *
@@ -15,8 +17,15 @@ public class Main {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        //create models and view
+        GameModel myModel = new GameModel();
+        Grid myView = new Grid();
         
-        // TODO code application logic here
+        myModel.addObserver(myView);
+        
+        
+        
+        
     }
     
 }

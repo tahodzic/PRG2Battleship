@@ -10,10 +10,10 @@ package Model;
  * @author Damir Hodzic
  */
 public class ComputerOpponent implements IOpponent{
-    private GameGrid grid;
+    public GameGrid oppGrid;
     
     public ComputerOpponent(){
-        grid = new GameGrid(false);
+        oppGrid = new GameGrid(false);
     }
     @Override
     public void placeShip(Ship ship) {

@@ -26,7 +26,7 @@ public class Ship {
     
     /**
      * Adds field to ship
-     * @return Returns true if the field was added successfully
+     * @return Returns true if the field was added
      */
     public boolean addField(int x, int y, GameGrid g) {
         Field field = g.getField(x, y);
@@ -65,6 +65,26 @@ public class Ship {
     }
     
     /**
+     * Removes field from ship
+     * @return Returns true if field was removed
+     */
+    public boolean removeField(int x, int y, GameGrid g) {
+        Field field = g.getField(x, y);
+        if(field.containsField(fields)) {
+            field.setState(FieldState.WATER);
+            return fields.remove(field);
+        }
+        return false;
+    }
+    
+    public void removeFields() {
+        for(Field field : fields) {
+            fields.remove(field);
+            field.setState(FieldState.WATER);
+        }
+    }
+    
+    /**
      * Goes through all fields of the ship and checks if they are hit or not
      * @return Returns true if the ship is still alive
      */
@@ -87,6 +107,10 @@ public class Ship {
     
     public ArrayList<Field> getFields() {
         return this.fields;
+    }
+    
+    public int getLength() {
+        return this.length;
     }
     
     // For testing purpose

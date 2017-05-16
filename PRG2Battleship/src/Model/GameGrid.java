@@ -15,6 +15,7 @@ public class GameGrid {
     
     private final Field[][] gameFields = new Field[7][7];
     private final ArrayList<Ship> ships;
+    private Ship ship1, ship2, ship3, ship4, ship5;
     
     // true if the grid is the primary grid not the tracking/opponent grid
     private final boolean primaryGrid;
@@ -22,10 +23,11 @@ public class GameGrid {
     public GameGrid(boolean primaryGrid) {
         this.primaryGrid = primaryGrid;
         this.ships = new ArrayList<>();
-        initializeGrid();
+        initGrid();
+        initShips();
     }
     
-    public void initializeGrid() {
+    public void initGrid() {
         for(int i = 0; i < 7; i++) {
             for(int j = 0; j < 7; j++) {
                 gameFields[i][j] = new Field(i+1, j+1);
@@ -33,9 +35,17 @@ public class GameGrid {
         }
     }
     
-    public void attackField(int x, int y) {
+    public void initShips() {
+        addShip(ship1 = new Ship(1));
+        addShip(ship2 = new Ship(2));
+        addShip(ship3 = new Ship(2));
+        addShip(ship4 = new Ship(3));
+        addShip(ship5 = new Ship(4));
+    }
+    
+    public boolean attackField(int x, int y) {
         Field field = this.getField(x, y);
-        field.attackField(this);
+        return field.attackField(this);
     }
     
     public Field getField(int x, int y) {
@@ -50,16 +60,25 @@ public class GameGrid {
         return this.primaryGrid;
     }
     
-    public Ship findShipByCoords(int x, int y) {
+    public Ship findShipByCoords(int x, int y) throws NullPointerException {
         Field f = this.getField(x, y);
         for(Ship ship : ships) {
             if(f.containsField(ship.getFields())) {
                 return ship;
             }
         }
-        return null;
+        throw new NullPointerException();
     }
     
+    // For testing purpose
+    public void printShips() {
+        for(Ship ship : ships) {
+            System.out.println(ship.getLength());
+        }
+    }
     
+    public static void main(String[] args) {
+    
+    }
     
 }

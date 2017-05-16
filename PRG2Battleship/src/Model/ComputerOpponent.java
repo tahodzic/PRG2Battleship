@@ -15,9 +15,10 @@ public class ComputerOpponent implements IOpponent{
     public ComputerOpponent(){
         grid = new GameGrid(false);
     }
+
     @Override
-    public void placeShip(Ship ship) {
+    public void attackField(int posX, int posY) {
         
     }
-    
+         
 }

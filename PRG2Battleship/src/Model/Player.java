@@ -16,9 +16,11 @@ public class Player implements IOpponent{
     public Player(){
         myGrid = new GameGrid(true);
     }
-   
+
     @Override
-    public void placeShip(Ship ship) {
+    public void attackField(int posX, int posY) {
+      
     }
+   
     
 }

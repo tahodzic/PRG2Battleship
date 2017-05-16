@@ -10,7 +10,12 @@ package Model;
  * @author Damir Hodzic
  */
 public class Player implements IOpponent{
-
+    
+    public GameGrid myGrid;
+    
+    public Player(){
+        myGrid = new GameGrid(true);
+    }
    
     @Override
     public void placeShip(Ship ship) {

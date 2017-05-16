@@ -27,15 +27,16 @@ public class GameModel extends Observable{
     //count for ship creation, helps decide when to start with new ship
     // or to keep filling the old ship
     private int fieldCount = 0;
-    private IOpponent compOpponent, networkOpponent, playerOne;
+    private IOpponent compOpponent, networkOpponent;
+    private Player playerOne;
     private boolean playerOneTurn = false;
-    private GameGrid gameGrid;
+    // private GameGrid gameGrid;
     private ArrayList<Ship> ships = new ArrayList<Ship>();
     private Ship ship;
     
             
     public GameModel(){
-      playerOne = new Player();       
+      playerOne = new Player();  
       state = gameState.SELECTING_OPPONENT;
       playerOneTurn = new Random().nextBoolean();     
       //Initialize gameGrid
@@ -58,15 +59,13 @@ public class GameModel extends Observable{
             case PREPARING_GRID:
                 if(!shipInCreation){
                     ship = new Ship(length);
-                    ship.addField(new Field(posX, posY));
-                    gameGrid.addShip (ship);
+                    ship.addField(posX, posY, playerOne.myGrid);
                     ships.add(ship);
                     fieldCount = length - 1;
                     shipInCreation = true;
                 }
                 else {
-                    //ship.addField();
-                    gameGrid.addShip (ship);
+                    ship.addField(posX, posY, playerOne.myGrid);
                     fieldCount--;
                     if(fieldCount == 0)
                         //one ship finished
@@ -75,6 +74,7 @@ public class GameModel extends Observable{
                 
                 //change to play state
                 if(length == -1){
+                    playerOne.myGrid.addShip (ship);
                     state = gameState.PLAY;
                 }
                 break;

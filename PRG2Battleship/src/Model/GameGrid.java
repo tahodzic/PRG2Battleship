@@ -33,6 +33,11 @@ public class GameGrid {
         }
     }
     
+    public void attackField(int x, int y) {
+        Field field = this.getField(x, y);
+        field.attackField(this);
+    }
+    
     public Field getField(int x, int y) {
         return gameFields[x-1][y-1];
     }
@@ -45,5 +50,16 @@ public class GameGrid {
         return this.primaryGrid;
     }
     
-
+    public Ship findShipByCoords(int x, int y) {
+        Field f = this.getField(x, y);
+        for(Ship ship : ships) {
+            if(f.containsField(ship.getFields())) {
+                return ship;
+            }
+        }
+        return null;
+    }
+    
+    
+    
 }

@@ -83,6 +83,32 @@ public class Field {
         return false;
     }
     
+    public boolean isValidAttackField() {
+        return (this.state == FieldState.WATER || this.state == FieldState.SHIP);
+    }
+    
+    /**
+     * Sets an attacked field to MISSED or HIT
+     * @return Returns true if the field was valid and has been attacked
+     */
+    public boolean attackField(GameGrid g) {
+        if(this.isValidAttackField()) {
+            switch(this.state) {
+                case WATER:
+                    this.setState(FieldState.MISSED);
+                return true;
+                case SHIP:
+                    this.setState(FieldState.HIT);
+                    Ship ship = g.findShipByCoords(this.x, this.y);
+                    if(!ship.isStillAlive()) {
+                        ship.setIsAlive(false);
+                    }
+                return true;
+            }
+        }
+        return false;
+    }
+   
     /**
      * Checks if a field is empty (not already in use)
      * @return Returns true if the field is empty

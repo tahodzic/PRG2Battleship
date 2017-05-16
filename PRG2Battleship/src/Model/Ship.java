@@ -64,6 +64,19 @@ public class Ship {
         return false;
     }
     
+    /**
+     * Goes through all fields of the ship and checks if they are hit or not
+     * @return Returns true if the ship is still alive
+     */
+    public boolean isStillAlive() {
+        for(Field field : fields) {
+            if(field.getState() != FieldState.HIT) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
     public void setIsAlive(boolean isAlive) {
         this.isAlive = isAlive;
     }
@@ -78,7 +91,7 @@ public class Ship {
     
     // For testing purpose
     public void printFields() {
-        for(Field f: fields) {
+        for(Field f : fields) {
             System.out.println(f.getX()+", " +f.getY());
         }
     }

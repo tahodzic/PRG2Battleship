@@ -27,7 +27,8 @@ public class GameModel extends Observable{
     //count for ship creation, helps decide when to start with new ship
     // or to keep filling the old ship
     private int fieldCount = 0;
-    private IOpponent compOpponent, networkOpponent;
+    private ComputerOpponent compOpponent;
+    private NetworkOpponent networkOpponent;
     private Player playerOne;
     private boolean playerOneTurn = false;
     // private GameGrid gameGrid;
@@ -81,7 +82,11 @@ public class GameModel extends Observable{
             case PLAY: 
                 if(netPlay){
                     if(playerOneTurn){
-                        
+                        compOpponent.oppGrid.attackField(posX, posY);
+                        notifyObservers();
+                    }
+                    else{
+                        playerOne.myGrid.attackField(posX, posY);
                     }
                 }
 

@@ -10,9 +10,9 @@ package Model;
  * @author Damir Hodzic
  */
 public interface IOpponent {
-    boolean[][] gameGrid = new boolean[7][7];
+    //GameGrid gameGrid = new GameGrid(7,7);
     int posX = 0, posY = 0;
     
-    void placeShip(Ship ship);
+    void attackField(int posX, int posY);
     
 }

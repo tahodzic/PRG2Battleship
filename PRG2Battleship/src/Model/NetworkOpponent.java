@@ -5,14 +5,32 @@
  */
 package Model;
 
+import Controller.GridController;
+
 /**
  *
  * @author Damir Hodzic
  */
 public class NetworkOpponent implements IOpponent{
-
-    @Override
-    public void placeShip(Ship ship) {
+    
+    public NetworkOpponent(){
+    NetworkOpponent server;
+    GridController gameControlInstance;
+    GameState gameState;
+    final int LEVEL_ERROR = 1;
+    final int LEVEL_NORMAL = 0;
+    private ClientHandler clientHandelerPlayer1;
+    private ClientHandler clientHandelerPlayer2;
+    private Thread client1;
+    private Thread client2;
     }
     
+    @Override
+    @Override
+    public void attackField(int posX, int posY) {
+    }
+    
+    public void recievedAttack(){
+        
+    }
 }

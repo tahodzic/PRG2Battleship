@@ -119,4 +119,9 @@ public class Ship {
             System.out.println(f.getX()+", " +f.getY());
         }
     }
+    
+    // For testing purpose
+    public void printIsAlive() {
+        System.out.println(this.isAlive);
+    }
 }

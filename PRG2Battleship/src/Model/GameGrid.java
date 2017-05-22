@@ -78,7 +78,9 @@ public class GameGrid {
     }
     
     public static void main(String[] args) {
-    
+        GameGrid g = new GameGrid(false);
+        Ship s = g.ship1;
+        s.addField(1, 2, g);
     }
     
 }

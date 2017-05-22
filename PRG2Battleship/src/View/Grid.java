@@ -142,7 +142,7 @@ public class Grid extends JFrame implements Observer{
     public Grid() {
         
         super("Grid");
-        setSize(800, 500);
+        setSize(800, 600);
         panel2.setLayout(new GridLayout(7,7));
         panel3.setLayout(new GridLayout(7,7));
         panel4.setLayout(new GridLayout(2,2));

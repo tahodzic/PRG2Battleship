@@ -141,7 +141,4 @@ public class Field {
         return this.y;
     }
     
-    public String getName() {
-        return ("field"+x+""+y);
-    }
 }

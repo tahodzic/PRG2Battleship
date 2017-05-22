@@ -21,6 +21,7 @@ public class Main {
         GameModel myModel = new GameModel();
         Grid myView = new Grid();
         
+        
        // myModel.addObserver(myView);
         
         

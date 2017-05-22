@@ -83,10 +83,14 @@ public class GameModel extends Observable{
                 if(netPlay){
                     if(playerOneTurn){
                         compOpponent.oppGrid.attackField(posX, posY);
+                        setChanged();
                         notifyObservers();
                     }
                     else{
-                        playerOne.myGrid.attackField(posX, posY);
+                        compOpponent.attackField(playerOne.myGrid);
+                        setChanged();
+                        notifyObservers();
+                        
                     }
                 }
 

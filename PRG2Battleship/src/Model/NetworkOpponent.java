@@ -30,10 +30,11 @@ public class NetworkOpponent implements IOpponent{
     
     }
     
-    
+  
     
       
     public void recievedAttack(){
         
     }
 }
+

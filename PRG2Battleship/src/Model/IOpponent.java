@@ -11,6 +11,7 @@ package Model;
  */
 public interface IOpponent {
     //GameGrid gameGrid = new GameGrid(7,7);
+
     int posX = 0, posY = 0;
     
     void attackField(GameGrid g);

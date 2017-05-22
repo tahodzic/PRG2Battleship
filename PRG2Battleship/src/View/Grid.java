@@ -27,7 +27,10 @@ import javax.swing.WindowConstants;
 public class Grid extends JFrame implements ActionListener{
     
      private final JPanel panel2 = new JPanel();
-     
+     private final JPanel panel3 = new JPanel();
+     private final JLabel label1 = new JLabel("Dein Spielfeld");
+     private final JLabel label2 = new JLabel("Gegner Spielfeld");
+    //Linkes Spielfeld 
     private final JButton button11 = new JButton("1");
     private final JButton button12 = new JButton("2");
     private final JButton button13 = new JButton("3");
@@ -77,14 +80,67 @@ public class Grid extends JFrame implements ActionListener{
     private final JButton button75 = new JButton("47");
     private final JButton button76 = new JButton("48");
     private final JButton button77 = new JButton("49");
+    
+    //Rechtes Spielfeld
+    private final JButton button011 = new JButton("1");
+    private final JButton button012 = new JButton("2");
+    private final JButton button013 = new JButton("3");
+    private final JButton button014 = new JButton("4");
+    private final JButton button015 = new JButton("5");
+    private final JButton button016 = new JButton("6");
+    private final JButton button017 = new JButton("7");
+    private final JButton button021 = new JButton("8");
+    private final JButton button022 = new JButton("9");
+    private final JButton button023 = new JButton("10");
+    private final JButton button024 = new JButton("11");
+    private final JButton button025 = new JButton("12");
+    private final JButton button026 = new JButton("13");
+    private final JButton button027 = new JButton("14");
+    private final JButton button031 = new JButton("15");
+    private final JButton button032 = new JButton("16");
+    private final JButton button033 = new JButton("17");
+    private final JButton button034 = new JButton("18");
+    private final JButton button035 = new JButton("19");
+    private final JButton button036 = new JButton("20");
+    private final JButton button037=  new JButton("21");
+    private final JButton button041=  new JButton("22");
+    private final JButton button042 = new JButton("23");
+    private final JButton button043 = new JButton("24");
+    private final JButton button044 = new JButton("25");
+    private final JButton button045 = new JButton("26");
+    private final JButton button046 = new JButton("27");
+    private final JButton button047 = new JButton("28");
+    private final JButton button051 = new JButton("29");
+    private final JButton button052 = new JButton("30");
+    private final JButton button053 = new JButton("31");
+    private final JButton button054 = new JButton("32");
+    private final JButton button055 = new JButton("33");
+    private final JButton button056 = new JButton("34");
+    private final JButton button057 = new JButton("35");
+    private final JButton button061 = new JButton("36");
+    private final JButton button062 = new JButton("37");
+    private final JButton button063 = new JButton("38");
+    private final JButton button064 = new JButton("39");
+    private final JButton button065 = new JButton("40");
+    private final JButton button066 = new JButton("41");
+    private final JButton button067 = new JButton("42");
+    private final JButton button071 = new JButton("43");
+    private final JButton button072 = new JButton("44");
+    private final JButton button073 = new JButton("45");
+    private final JButton button074 = new JButton("46");
+    private final JButton button075 = new JButton("47");
+    private final JButton button076 = new JButton("48");
+    private final JButton button077 = new JButton("49");
 
     public Grid() {
         
         super("Grid");
-        
+        setSize(800, 500);
         panel2.setLayout(new GridLayout(7,7));
+        panel3.setLayout(new GridLayout(7,7));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        panel2.setPreferredSize(new Dimension(750,750));
+        setLayout(new GridBagLayout());
+        //Linkes Spielfeld
         panel2.add(button11);
         panel2.add(button12);
         panel2.add(button13);
@@ -135,57 +191,77 @@ public class Grid extends JFrame implements ActionListener{
         panel2.add(button76);
         panel2.add(button77);
         
-        button11.addActionListener(this);
-        button12.addActionListener(this);
-        button13.addActionListener(this);
-        button14.addActionListener(this);
-        button15.addActionListener(this);
-        button16.addActionListener(this);
-        button17.addActionListener(this);
-        button21.addActionListener(this);
-        button22.addActionListener(this);
-        button23.addActionListener(this);
-        button24.addActionListener(this);
-        button25.addActionListener(this);
-        button26.addActionListener(this);
-        button27.addActionListener(this);
-        button31.addActionListener(this);
-        button32.addActionListener(this);
-        button33.addActionListener(this);
-        button34.addActionListener(this);
-        button35.addActionListener(this);
-        button36.addActionListener(this);
-        button37.addActionListener(this);       
-        button41.addActionListener(this);
-        button42.addActionListener(this);
-        button43.addActionListener(this);
-        button44.addActionListener(this);
-        button45.addActionListener(this);
-        button46.addActionListener(this);
-        button47.addActionListener(this);
-        button51.addActionListener(this);
-        button52.addActionListener(this);
-        button53.addActionListener(this);
-        button54.addActionListener(this);
-        button55.addActionListener(this);
-        button56.addActionListener(this);
-        button57.addActionListener(this);
-        button61.addActionListener(this);
-        button62.addActionListener(this);
-        button63.addActionListener(this);
-        button64.addActionListener(this);
-        button65.addActionListener(this);
-        button66.addActionListener(this);
-        button67.addActionListener(this);
-        button71.addActionListener(this);
-        button72.addActionListener(this);
-        button73.addActionListener(this);
-        button74.addActionListener(this);
-        button75.addActionListener(this);
-        button76.addActionListener(this);
-        button77.addActionListener(this); 
+        //Rechtes Spielfeld
+        panel3.add(button011);
+        panel3.add(button012);
+        panel3.add(button013);
+        panel3.add(button014);
+        panel3.add(button015);
+        panel3.add(button016);
+        panel3.add(button017);
+        panel3.add(button021);
+        panel3.add(button022);
+        panel3.add(button023);
+        panel3.add(button024);
+        panel3.add(button025);
+        panel3.add(button026);
+        panel3.add(button027);
+        panel3.add(button031);
+        panel3.add(button032);
+        panel3.add(button033);
+        panel3.add(button034);
+        panel3.add(button035);
+        panel3.add(button036);
+        panel3.add(button037);
+        panel3.add(button041);
+        panel3.add(button042);
+        panel3.add(button043);
+        panel3.add(button044);
+        panel3.add(button045);
+        panel3.add(button046);
+        panel3.add(button047);
+        panel3.add(button051);
+        panel3.add(button052);
+        panel3.add(button053);
+        panel3.add(button054);
+        panel3.add(button055);
+        panel3.add(button056);
+        panel3.add(button057);
+        panel3.add(button061);
+        panel3.add(button062);
+        panel3.add(button063);
+        panel3.add(button064);
+        panel3.add(button065);
+        panel3.add(button066);
+        panel3.add(button067);
+        panel3.add(button071);
+        panel3.add(button072);
+        panel3.add(button073);
+        panel3.add(button074);
+        panel3.add(button075);
+        panel3.add(button076);
+        panel3.add(button077);
         
-        add(panel2);
+        GridBagConstraints gb = new GridBagConstraints();
+        gb.weightx = 1;
+        gb.weighty = 1;
+        
+        gb.gridx = 0;
+        gb.gridy = 1;
+        add(panel2, gb);
+       
+        gb.gridx = 1;
+        gb.gridy = 1;
+        add(panel3, gb);
+        
+        gb.gridx = 0;
+        gb.gridy = 0;
+        add(label1, gb);
+        
+        gb.gridx = 1;
+        gb.gridy = 0;
+        add(label2, gb);
+        
         setVisible(true);
     }
     
@@ -196,6 +272,109 @@ public class Grid extends JFrame implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        
+    }
+    public void addContorller( ActionListener controller){
+        //Spielfeld Links
+        button11.addActionListener(controller);
+        button12.addActionListener(controller);
+        button13.addActionListener(controller);
+        button14.addActionListener(controller);
+        button15.addActionListener(controller);
+        button16.addActionListener(controller);
+        button17.addActionListener(controller);
+        button21.addActionListener(controller);
+        button22.addActionListener(controller);
+        button23.addActionListener(controller);
+        button24.addActionListener(controller);
+        button25.addActionListener(controller);
+        button26.addActionListener(controller);
+        button27.addActionListener(controller);
+        button31.addActionListener(controller);
+        button32.addActionListener(controller);
+        button33.addActionListener(controller);
+        button34.addActionListener(controller);
+        button35.addActionListener(controller);
+        button36.addActionListener(controller);
+        button37.addActionListener(controller);
+        button41.addActionListener(controller);
+        button42.addActionListener(controller);
+        button43.addActionListener(controller);
+        button44.addActionListener(controller);
+        button45.addActionListener(controller);
+        button46.addActionListener(controller);
+        button47.addActionListener(controller);
+        button51.addActionListener(controller);
+        button52.addActionListener(controller);
+        button53.addActionListener(controller);
+        button54.addActionListener(controller);
+        button55.addActionListener(controller);
+        button56.addActionListener(controller);
+        button57.addActionListener(controller);
+        button61.addActionListener(controller);
+        button62.addActionListener(controller);
+        button63.addActionListener(controller);
+        button64.addActionListener(controller);
+        button65.addActionListener(controller);
+        button66.addActionListener(controller);
+        button67.addActionListener(controller);
+        button71.addActionListener(controller);
+        button72.addActionListener(controller);
+        button73.addActionListener(controller);
+        button74.addActionListener(controller);
+        button75.addActionListener(controller);
+        button76.addActionListener(controller);
+        button77.addActionListener(controller);
+        //Spielfeld rechts
+        button011.addActionListener(controller);
+        button012.addActionListener(controller);
+        button013.addActionListener(controller);
+        button014.addActionListener(controller);
+        button015.addActionListener(controller);
+        button016.addActionListener(controller);
+        button017.addActionListener(controller);
+        button021.addActionListener(controller);
+        button022.addActionListener(controller);
+        button023.addActionListener(controller);
+        button024.addActionListener(controller);
+        button025.addActionListener(controller);
+        button026.addActionListener(controller);
+        button027.addActionListener(controller);
+        button031.addActionListener(controller);
+        button032.addActionListener(controller);
+        button033.addActionListener(controller);
+        button034.addActionListener(controller);
+        button035.addActionListener(controller);
+        button036.addActionListener(controller);
+        button037.addActionListener(controller);
+        button041.addActionListener(controller);
+        button042.addActionListener(controller);
+        button043.addActionListener(controller);
+        button044.addActionListener(controller);
+        button045.addActionListener(controller);
+        button046.addActionListener(controller);
+        button047.addActionListener(controller);
+        button051.addActionListener(controller);
+        button052.addActionListener(controller);
+        button053.addActionListener(controller);
+        button054.addActionListener(controller);
+        button055.addActionListener(controller);
+        button056.addActionListener(controller);
+        button057.addActionListener(controller);
+        button061.addActionListener(controller);
+        button062.addActionListener(controller);
+        button063.addActionListener(controller);
+        button064.addActionListener(controller);
+        button065.addActionListener(controller);
+        button066.addActionListener(controller);
+        button067.addActionListener(controller);
+        button071.addActionListener(controller);
+        button072.addActionListener(controller);
+        button073.addActionListener(controller);
+        button074.addActionListener(controller);
+        button075.addActionListener(controller);
+        button076.addActionListener(controller);
+        button077.addActionListener(controller);
         
     }
     

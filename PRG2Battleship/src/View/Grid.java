@@ -30,7 +30,7 @@ public class Grid extends JFrame implements ActionListener{
      private final JPanel panel3 = new JPanel();
      private final JLabel label1 = new JLabel("Dein Spielfeld");
      private final JLabel label2 = new JLabel("Gegner Spielfeld");
-     
+    //Linkes Spielfeld 
     private final JButton button11 = new JButton("1");
     private final JButton button12 = new JButton("2");
     private final JButton button13 = new JButton("3");
@@ -81,6 +81,7 @@ public class Grid extends JFrame implements ActionListener{
     private final JButton button76 = new JButton("48");
     private final JButton button77 = new JButton("49");
     
+    //Rechtes Spielfeld
     private final JButton button011 = new JButton("1");
     private final JButton button012 = new JButton("2");
     private final JButton button013 = new JButton("3");
@@ -139,7 +140,7 @@ public class Grid extends JFrame implements ActionListener{
         panel3.setLayout(new GridLayout(7,7));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(new GridBagLayout());
-        
+        //Linkes Spielfeld
         panel2.add(button11);
         panel2.add(button12);
         panel2.add(button13);
@@ -190,6 +191,7 @@ public class Grid extends JFrame implements ActionListener{
         panel2.add(button76);
         panel2.add(button77);
         
+        //Rechtes Spielfeld
         panel3.add(button011);
         panel3.add(button012);
         panel3.add(button013);
@@ -270,6 +272,109 @@ public class Grid extends JFrame implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
+        
+    }
+    public void addContorller( ActionListener controller){
+        //Spielfeld Links
+        button11.addActionListener(controller);
+        button12.addActionListener(controller);
+        button13.addActionListener(controller);
+        button14.addActionListener(controller);
+        button15.addActionListener(controller);
+        button16.addActionListener(controller);
+        button17.addActionListener(controller);
+        button21.addActionListener(controller);
+        button22.addActionListener(controller);
+        button23.addActionListener(controller);
+        button24.addActionListener(controller);
+        button25.addActionListener(controller);
+        button26.addActionListener(controller);
+        button27.addActionListener(controller);
+        button31.addActionListener(controller);
+        button32.addActionListener(controller);
+        button33.addActionListener(controller);
+        button34.addActionListener(controller);
+        button35.addActionListener(controller);
+        button36.addActionListener(controller);
+        button37.addActionListener(controller);
+        button41.addActionListener(controller);
+        button42.addActionListener(controller);
+        button43.addActionListener(controller);
+        button44.addActionListener(controller);
+        button45.addActionListener(controller);
+        button46.addActionListener(controller);
+        button47.addActionListener(controller);
+        button51.addActionListener(controller);
+        button52.addActionListener(controller);
+        button53.addActionListener(controller);
+        button54.addActionListener(controller);
+        button55.addActionListener(controller);
+        button56.addActionListener(controller);
+        button57.addActionListener(controller);
+        button61.addActionListener(controller);
+        button62.addActionListener(controller);
+        button63.addActionListener(controller);
+        button64.addActionListener(controller);
+        button65.addActionListener(controller);
+        button66.addActionListener(controller);
+        button67.addActionListener(controller);
+        button71.addActionListener(controller);
+        button72.addActionListener(controller);
+        button73.addActionListener(controller);
+        button74.addActionListener(controller);
+        button75.addActionListener(controller);
+        button76.addActionListener(controller);
+        button77.addActionListener(controller);
+        //Spielfeld rechts
+        button011.addActionListener(controller);
+        button012.addActionListener(controller);
+        button013.addActionListener(controller);
+        button014.addActionListener(controller);
+        button015.addActionListener(controller);
+        button016.addActionListener(controller);
+        button017.addActionListener(controller);
+        button021.addActionListener(controller);
+        button022.addActionListener(controller);
+        button023.addActionListener(controller);
+        button024.addActionListener(controller);
+        button025.addActionListener(controller);
+        button026.addActionListener(controller);
+        button027.addActionListener(controller);
+        button031.addActionListener(controller);
+        button032.addActionListener(controller);
+        button033.addActionListener(controller);
+        button034.addActionListener(controller);
+        button035.addActionListener(controller);
+        button036.addActionListener(controller);
+        button037.addActionListener(controller);
+        button041.addActionListener(controller);
+        button042.addActionListener(controller);
+        button043.addActionListener(controller);
+        button044.addActionListener(controller);
+        button045.addActionListener(controller);
+        button046.addActionListener(controller);
+        button047.addActionListener(controller);
+        button051.addActionListener(controller);
+        button052.addActionListener(controller);
+        button053.addActionListener(controller);
+        button054.addActionListener(controller);
+        button055.addActionListener(controller);
+        button056.addActionListener(controller);
+        button057.addActionListener(controller);
+        button061.addActionListener(controller);
+        button062.addActionListener(controller);
+        button063.addActionListener(controller);
+        button064.addActionListener(controller);
+        button065.addActionListener(controller);
+        button066.addActionListener(controller);
+        button067.addActionListener(controller);
+        button071.addActionListener(controller);
+        button072.addActionListener(controller);
+        button073.addActionListener(controller);
+        button074.addActionListener(controller);
+        button075.addActionListener(controller);
+        button076.addActionListener(controller);
+        button077.addActionListener(controller);
         
     }
     

@@ -81,10 +81,9 @@ public class Grid extends JFrame implements ActionListener{
     public Grid() {
         
         super("Grid");
-        
         panel2.setLayout(new GridLayout(7,7));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        panel2.setPreferredSize(new Dimension(750,750));
+        
         panel2.add(button11);
         panel2.add(button12);
         panel2.add(button13);
@@ -135,57 +134,65 @@ public class Grid extends JFrame implements ActionListener{
         panel2.add(button76);
         panel2.add(button77);
         
-        button11.addActionListener(this);
-        button12.addActionListener(this);
-        button13.addActionListener(this);
-        button14.addActionListener(this);
-        button15.addActionListener(this);
-        button16.addActionListener(this);
-        button17.addActionListener(this);
-        button21.addActionListener(this);
-        button22.addActionListener(this);
-        button23.addActionListener(this);
-        button24.addActionListener(this);
-        button25.addActionListener(this);
-        button26.addActionListener(this);
-        button27.addActionListener(this);
-        button31.addActionListener(this);
-        button32.addActionListener(this);
-        button33.addActionListener(this);
-        button34.addActionListener(this);
-        button35.addActionListener(this);
-        button36.addActionListener(this);
-        button37.addActionListener(this);       
-        button41.addActionListener(this);
-        button42.addActionListener(this);
-        button43.addActionListener(this);
-        button44.addActionListener(this);
-        button45.addActionListener(this);
-        button46.addActionListener(this);
-        button47.addActionListener(this);
-        button51.addActionListener(this);
-        button52.addActionListener(this);
-        button53.addActionListener(this);
-        button54.addActionListener(this);
-        button55.addActionListener(this);
-        button56.addActionListener(this);
-        button57.addActionListener(this);
-        button61.addActionListener(this);
-        button62.addActionListener(this);
-        button63.addActionListener(this);
-        button64.addActionListener(this);
-        button65.addActionListener(this);
-        button66.addActionListener(this);
-        button67.addActionListener(this);
-        button71.addActionListener(this);
-        button72.addActionListener(this);
-        button73.addActionListener(this);
-        button74.addActionListener(this);
-        button75.addActionListener(this);
-        button76.addActionListener(this);
-        button77.addActionListener(this); 
+        GridBagConstraints gb = new GridBagConstraints();
+        gb.weightx = 0.5;
+        gb.weighty = 0.5;
         
-        add(panel2);
+        gb.gridx = 0;
+        gb.gridy = 0;
+        add(panel2, gb);
+       
+        panel2.add(button11);
+        panel2.add(button12);
+        panel2.add(button13);
+        panel2.add(button14);
+        panel2.add(button15);
+        panel2.add(button16);
+        panel2.add(button17);
+        panel2.add(button21);
+        panel2.add(button22);
+        panel2.add(button23);
+        panel2.add(button24);
+        panel2.add(button25);
+        panel2.add(button26);
+        panel2.add(button27);
+        panel2.add(button31);
+        panel2.add(button32);
+        panel2.add(button33);
+        panel2.add(button34);
+        panel2.add(button35);
+        panel2.add(button36);
+        panel2.add(button37);
+        panel2.add(button41);
+        panel2.add(button42);
+        panel2.add(button43);
+        panel2.add(button44);
+        panel2.add(button45);
+        panel2.add(button46);
+        panel2.add(button47);
+        panel2.add(button51);
+        panel2.add(button52);
+        panel2.add(button53);
+        panel2.add(button54);
+        panel2.add(button55);
+        panel2.add(button56);
+        panel2.add(button57);
+        panel2.add(button61);
+        panel2.add(button62);
+        panel2.add(button63);
+        panel2.add(button64);
+        panel2.add(button65);
+        panel2.add(button66);
+        panel2.add(button67);
+        panel2.add(button71);
+        panel2.add(button72);
+        panel2.add(button73);
+        panel2.add(button74);
+        panel2.add(button75);
+        panel2.add(button76);
+        panel2.add(button77);
+        
+        
         setVisible(true);
     }
     

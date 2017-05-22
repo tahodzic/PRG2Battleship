@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package Model;
+import java.util.Random;
 
 /**
  *
@@ -11,14 +12,16 @@ package Model;
  */
 public class ComputerOpponent implements IOpponent{
     public GameGrid oppGrid;
+    Random randomnr = new Random();
     
     public ComputerOpponent(){
         oppGrid = new GameGrid(false);
     }
 
     @Override
-    public void attackField(int posX, int posY) {
-        
+    public void attackField(GameGrid g) {
+        int posX = randomnr.nextInt((7))+0;
+        int posY= randomnr.nextInt((7))+0;   
+        g.attackField(posX, posY);
     }
-         
 }

@@ -29,7 +29,7 @@ public class GameModel extends Observable{
     private int fieldCount = 0;
     private ComputerOpponent compOpponent;
     private NetworkOpponent networkOpponent;
-    private Player playerOne;
+    public Player playerOne;
     private boolean playerOneTurn = false;
     // private GameGrid gameGrid;
     private ArrayList<Ship> ships = new ArrayList<Ship>();

@@ -18,7 +18,7 @@ public class Player implements IOpponent{
     }
 
     @Override
-    public void attackField(int posX, int posY) {
+    public void attackField(GameGrid g) {
       
     }
    

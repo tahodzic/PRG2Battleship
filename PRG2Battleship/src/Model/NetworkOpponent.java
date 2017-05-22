@@ -26,14 +26,15 @@ public class NetworkOpponent implements IOpponent{
 
     }
     @Override
-    public void attackField(int posX, int posY) {
+    public void attackField(GameGrid g) {
     
     }
     
-    
+  
     
       
     public void recievedAttack(){
         
     }
 }
+

@@ -7,12 +7,13 @@ package View;
 
 import static com.sun.glass.ui.Cursor.setVisible;
 import java.awt.*;
-import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Set;
 import javax.swing.*;
 import javax.swing.JFrame;
@@ -24,12 +25,18 @@ import javax.swing.WindowConstants;
  *
  * @author Ueli Steimen
  */
-public class Grid extends JFrame implements ActionListener{
+public class Grid extends JFrame implements Observer{
     
      private final JPanel panel2 = new JPanel();
      private final JPanel panel3 = new JPanel();
+     private final JPanel panel4 = new JPanel();
      private final JLabel label1 = new JLabel("Dein Spielfeld");
      private final JLabel label2 = new JLabel("Gegner Spielfeld");
+     private final JButton ship1 = new JButton("1er Schiff");
+     private final JButton ship2 = new JButton("2er Schiff");
+     private final JButton ship3 = new JButton("3er Schiff");
+     private final JButton ship4 = new JButton("4er Schiff");
+     private final JButton play = new JButton("Play");
     //Linkes Spielfeld 
     private final JButton button11 = new JButton("1");
     private final JButton button12 = new JButton("2");
@@ -138,6 +145,7 @@ public class Grid extends JFrame implements ActionListener{
         setSize(800, 500);
         panel2.setLayout(new GridLayout(7,7));
         panel3.setLayout(new GridLayout(7,7));
+        panel4.setLayout(new GridLayout(2,2));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(new GridBagLayout());
         //Linkes Spielfeld
@@ -242,6 +250,11 @@ public class Grid extends JFrame implements ActionListener{
         panel3.add(button076);
         panel3.add(button077);
         
+        panel4.add(ship1);
+        panel4.add(ship2);
+        panel4.add(ship3);
+        panel4.add(ship4);
+        
         GridBagConstraints gb = new GridBagConstraints();
         gb.weightx = 1;
         gb.weighty = 1;
@@ -250,7 +263,7 @@ public class Grid extends JFrame implements ActionListener{
         gb.gridy = 1;
         add(panel2, gb);
        
-        gb.gridx = 1;
+        gb.gridx = 2;
         gb.gridy = 1;
         add(panel3, gb);
         
@@ -258,9 +271,17 @@ public class Grid extends JFrame implements ActionListener{
         gb.gridy = 0;
         add(label1, gb);
         
-        gb.gridx = 1;
+        gb.gridx = 2;
         gb.gridy = 0;
         add(label2, gb);
+        
+        gb.gridx = 0;
+        gb.gridy = 2;
+        add(panel4, gb);
+        
+        gb.gridx = 1;
+        gb.gridy = 2;
+        add(play, gb);
         
         setVisible(true);
     }
@@ -270,10 +291,7 @@ public class Grid extends JFrame implements ActionListener{
     
     }
     
-    @Override
-    public void actionPerformed(ActionEvent e) {
-        
-    }
+    
     public void addContorller( ActionListener controller){
         //Spielfeld Links
         button11.addActionListener(controller);
@@ -383,6 +401,170 @@ public class Grid extends JFrame implements ActionListener{
         Grid grid = new Grid();
     
     }
+
+    @Override
+    public void update(Observable o, Object arg) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
    
+    public void drawButtonPlaceShip(int a){
+        
+        switch(a){
+            case 11 :
+               button11.setBackground(Color.BLUE);
+                break;
+            case 12 :
+                
+                break;
+            case 13 :
+                
+                break;
+            case 14 :
+                
+                break;
+            case 15 :
+                
+                break;
+            case 16 :
+                
+                break;    
+            case 17 :
+                
+                break;
+            case 21 :
+                
+                break;
+            case 22 :
+                
+                break;
+            case 23 :
+                
+                break;
+            case 24 :
+                
+                break;
+            case 25 :
+                
+                 break;
+            case 26 :
+                
+                break;
+            case 27 :
+                
+                break;
+            case 31 :
+                
+                break;
+            case 32 :
+                
+                break;    
+            case 33 :
+                
+                break;
+            case 34 :
+                
+                break;
+            case 35 :
+                
+                break;
+            case 36 :
+                
+                break;    
+            case 37 :
+                
+                break;
+            case 41 :
+                
+                break;
+            case 42 :
+                
+                break;
+            case 43 :
+                
+                break;    
+            case 44 :
+                
+                break;
+            case 45 :
+                
+                break;    
+            case 46 :
+                
+                break;
+            case 47 :
+                
+                break;    
+            case 51 :
+                
+                break;
+            case 52 :
+                
+                break;        
+            case 53 :
+                
+                break;
+            case 54 :
+                
+                break;    
+            case 55 :
+                
+                break;
+            case 56 :
+                
+                break;    
+            case 57 :
+                
+                break;
+            case 61 :
+                
+                break;    
+            case 62 :
+                
+                break;
+            case 63 :
+                
+                break;    
+            case 64 :
+                
+                break;
+            case 65 :
+                
+                break;
+            case 66 :
+                
+                break;
+            case 67 :
+                
+                break;
+            case 71 :
+                
+                break;
+            case 72 :
+                
+                break;    
+            case 73 :
+                
+                break;
+            case 74 :
+                
+                break;    
+            case 75 :
+                
+                break;
+            case 76 :
+                
+                break;    
+            case 77 :
+                
+                break;
+            
+            default:
+                
+                
+  
+  
+        }
+        
     
+    }    
 }

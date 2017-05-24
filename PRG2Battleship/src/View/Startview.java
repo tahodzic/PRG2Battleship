@@ -65,6 +65,8 @@ public class Startview extends JFrame {
        
     }
     
+
+    
     public static void main(String[] args) {
         
         Startview n = new Startview();

@@ -15,7 +15,8 @@ public class GameGrid {
     
     private final Field[][] gameFields = new Field[7][7];
     private final ArrayList<Ship> ships;
-    private Ship ship1, ship2, ship3, ship4, ship5;
+    private Ship ship1, ship2, ship3, ship4, ship5, ship6, ship7, ship8, ship9, ship10;
+    private boolean isValid;
     
     // true if the grid is the primary grid not the tracking/opponent grid
     private final boolean primaryGrid;
@@ -37,10 +38,32 @@ public class GameGrid {
     
     public void initShips() {
         addShip(ship1 = new Ship(1));
-        addShip(ship2 = new Ship(2));
-        addShip(ship3 = new Ship(2));
-        addShip(ship4 = new Ship(3));
-        addShip(ship5 = new Ship(4));
+        addShip(ship2 = new Ship(1));
+        addShip(ship3 = new Ship(1));
+        addShip(ship4 = new Ship(1));
+        addShip(ship5 = new Ship(2));
+        addShip(ship6 = new Ship(2));
+        addShip(ship7 = new Ship(2));
+        addShip(ship8 = new Ship(3));
+        addShip(ship9 = new Ship(3));
+        addShip(ship10 = new Ship(4));
+    }
+    
+    public boolean shipAvailable(int length) {
+        if(this.findShip(length) == null) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+    
+    public Ship findShip(int length) {
+        for(Ship ship : ships) {
+            if(ship.getLength() == length && !ship.getFieldsSet()) {
+                return ship;
+            }
+        }
+        return null;
     }
     
     public boolean attackField(int x, int y) {
@@ -58,6 +81,14 @@ public class GameGrid {
     
     public boolean getPrimaryGrid() {
         return this.primaryGrid;
+    }
+    
+    public boolean getIsValid() {
+        return this.isValid;
+    }
+    
+    public void setIsValid(boolean isValid) {
+        this.isValid = isValid;
     }
     
     public Ship findShipByCoords(int x, int y) throws NullPointerException {
@@ -78,9 +109,7 @@ public class GameGrid {
     }
     
     public static void main(String[] args) {
-        GameGrid g = new GameGrid(false);
-        Ship s = g.ship1;
-        s.addField(1, 2, g);
+        
     }
     
 }

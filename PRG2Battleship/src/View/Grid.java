@@ -20,6 +20,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.WindowConstants;
+import Model.GameGrid;
+import Model.GameModel;
 
 /**
  *
@@ -37,7 +39,14 @@ public class Grid extends JFrame implements Observer{
      private final JButton ship3 = new JButton("3er Schiff");
      private final JButton ship4 = new JButton("4er Schiff");
      private final JButton play = new JButton("Play");
+     private final JButton[][] button1 = new JButton[7][7];
+     private final JButton[][] button2 = new JButton[7][7];
+     private final ArrayList<JButton>[][] liste1 = new ArrayList[7][7];
+     private final ArrayList<JButton>[][] liste2 = new ArrayList[7][7];
+     
+     
     //Linkes Spielfeld 
+   /*
     private final JButton button11 = new JButton("1");
     private final JButton button12 = new JButton("2");
     private final JButton button13 = new JButton("3");
@@ -138,118 +147,183 @@ public class Grid extends JFrame implements Observer{
     private final JButton button075 = new JButton("47");
     private final JButton button076 = new JButton("48");
     private final JButton button077 = new JButton("49");
-
+    */
+    
+  
+   
     public Grid() {
+         super("Grid");
+         int a = 1;
+         int b = 1;
+         for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 7; j++){
+                String s = Integer.toString(a);
+                button1[i][j] = new JButton(s);
+                a++;
+            }
+        }
+         
+        for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 7; j++){
+                panel2.add(button1[i][j]);
+            }
+        }
+         
+        for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 7; j++){
+                button1[i][j].setForeground(new Color(255, 255, 255, 0));
+            }
+        }
+         
+        for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 7; j++){
+                String s = Integer.toString(b);
+                button2[i][j] = new JButton(s);
+                b++;
+            }
+        }
+         
+        for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 7; j++){
+                panel3.add(button2[i][j]);
+            }
+        }
+         
+       for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 7; j++){
+                
+                button2[i][j].setForeground(new Color(255, 255, 255, 0));
+            }
+        }
+       
+       for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 7; j++){
+                liste1[i][j].add(button1[i][j]);
+                
+            }
+        }
         
-        super("Grid");
-        setSize(800, 500);
+        for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 7; j++){
+                
+                liste2[i][j].add(button2[i][j]);
+            }
+        }
+    
+        setSize(800, 600);
         panel2.setLayout(new GridLayout(7,7));
         panel3.setLayout(new GridLayout(7,7));
         panel4.setLayout(new GridLayout(2,2));
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         setLayout(new GridBagLayout());
         //Linkes Spielfeld
-        panel2.add(button11);
-        panel2.add(button12);
-        panel2.add(button13);
-        panel2.add(button14);
-        panel2.add(button15);
-        panel2.add(button16);
-        panel2.add(button17);
-        panel2.add(button21);
-        panel2.add(button22);
-        panel2.add(button23);
-        panel2.add(button24);
-        panel2.add(button25);
-        panel2.add(button26);
-        panel2.add(button27);
-        panel2.add(button31);
-        panel2.add(button32);
-        panel2.add(button33);
-        panel2.add(button34);
-        panel2.add(button35);
-        panel2.add(button36);
-        panel2.add(button37);
-        panel2.add(button41);
-        panel2.add(button42);
-        panel2.add(button43);
-        panel2.add(button44);
-        panel2.add(button45);
-        panel2.add(button46);
-        panel2.add(button47);
-        panel2.add(button51);
-        panel2.add(button52);
-        panel2.add(button53);
-        panel2.add(button54);
-        panel2.add(button55);
-        panel2.add(button56);
-        panel2.add(button57);
-        panel2.add(button61);
-        panel2.add(button62);
-        panel2.add(button63);
-        panel2.add(button64);
-        panel2.add(button65);
-        panel2.add(button66);
-        panel2.add(button67);
-        panel2.add(button71);
-        panel2.add(button72);
-        panel2.add(button73);
-        panel2.add(button74);
-        panel2.add(button75);
-        panel2.add(button76);
-        panel2.add(button77);
+           
+        
+       /* 
+        panel2.add(button11);       button11.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button12);       button12.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button13);       button13.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button14);       button14.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button15);       button15.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button16);       button16.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button17);       button17.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button21);       button21.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button22);       button22.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button23);       button23.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button24);       button24.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button25);       button25.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button26);       button26.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button27);       button27.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button31);       button31.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button32);       button32.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button33);       button33.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button34);       button34.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button35);       button35.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button36);       button36.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button37);       button37.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button41);       button41.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button42);       button42.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button43);       button43.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button44);       button44.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button45);       button45.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button46);       button46.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button47);       button47.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button51);       button51.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button52);       button52.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button53);       button53.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button54);       button54.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button55);       button55.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button56);       button56.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button57);       button57.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button61);       button61.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button62);       button62.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button63);       button63.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button64);       button64.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button65);       button65.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button66);       button66.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button67);       button67.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button71);       button71.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button72);       button72.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button73);       button73.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button74);       button74.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button75);       button75.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button76);       button76.setForeground(new Color(255, 255, 255, 0));
+        panel2.add(button77);       button77.setForeground(new Color(255, 255, 255, 0));
+        
+        
         
         //Rechtes Spielfeld
-        panel3.add(button011);
-        panel3.add(button012);
-        panel3.add(button013);
-        panel3.add(button014);
-        panel3.add(button015);
-        panel3.add(button016);
-        panel3.add(button017);
-        panel3.add(button021);
-        panel3.add(button022);
-        panel3.add(button023);
-        panel3.add(button024);
-        panel3.add(button025);
-        panel3.add(button026);
-        panel3.add(button027);
-        panel3.add(button031);
-        panel3.add(button032);
-        panel3.add(button033);
-        panel3.add(button034);
-        panel3.add(button035);
-        panel3.add(button036);
-        panel3.add(button037);
-        panel3.add(button041);
-        panel3.add(button042);
-        panel3.add(button043);
-        panel3.add(button044);
-        panel3.add(button045);
-        panel3.add(button046);
-        panel3.add(button047);
-        panel3.add(button051);
-        panel3.add(button052);
-        panel3.add(button053);
-        panel3.add(button054);
-        panel3.add(button055);
-        panel3.add(button056);
-        panel3.add(button057);
-        panel3.add(button061);
-        panel3.add(button062);
-        panel3.add(button063);
-        panel3.add(button064);
-        panel3.add(button065);
-        panel3.add(button066);
-        panel3.add(button067);
-        panel3.add(button071);
-        panel3.add(button072);
-        panel3.add(button073);
-        panel3.add(button074);
-        panel3.add(button075);
-        panel3.add(button076);
-        panel3.add(button077);
-        
+       
+        panel3.add(button011);      button011.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button012);      button012.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button013);      button013.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button014);      button014.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button015);      button015.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button016);      button016.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button017);      button017.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button021);      button021.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button022);      button022.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button023);      button023.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button024);      button024.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button025);      button025.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button026);      button026.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button027);      button027.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button031);      button031.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button032);      button032.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button033);      button033.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button034);      button034.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button035);      button035.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button036);      button036.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button037);      button037.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button041);      button041.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button042);      button042.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button043);      button043.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button044);      button044.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button045);      button045.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button046);      button046.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button047);      button047.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button051);      button051.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button052);      button052.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button053);      button053.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button054);      button054.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button055);      button055.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button056);      button056.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button057);      button057.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button061);      button061.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button062);      button062.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button063);      button063.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button064);      button064.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button065);      button065.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button066);      button066.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button067);      button067.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button071);      button071.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button072);      button072.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button073);      button073.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button074);      button074.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button075);      button075.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button076);      button076.setForeground(new Color(255, 255, 255, 0));
+        panel3.add(button077);      button077.setForeground(new Color(255, 255, 255, 0));
+        */
         panel4.add(ship1);
         panel4.add(ship2);
         panel4.add(ship3);
@@ -284,6 +358,7 @@ public class Grid extends JFrame implements Observer{
         add(play, gb);
         
         setVisible(true);
+        
     }
     
     public Rectangle getPosition(JButton button){
@@ -293,7 +368,21 @@ public class Grid extends JFrame implements Observer{
     
     
     public void addContorller( ActionListener controller){
-        //Spielfeld Links
+        
+        for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 7; j++){
+                button1[i][j].addActionListener(controller);
+            }
+        }
+        
+        for(int i = 0; i < 7; i++){
+            for(int j = 0; j < 7; j++){
+                
+                button2[i][j].addActionListener(controller);
+            }
+        }
+       
+        /*Spielfeld Links
         button11.addActionListener(controller);
         button12.addActionListener(controller);
         button13.addActionListener(controller);
@@ -393,7 +482,7 @@ public class Grid extends JFrame implements Observer{
         button075.addActionListener(controller);
         button076.addActionListener(controller);
         button077.addActionListener(controller);
-        
+        */
     }
     
     
@@ -404,167 +493,22 @@ public class Grid extends JFrame implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        
+       //switch(((GameModel)o).getState()){
+            
+        
+        //}
+        
+        
     }
+    
+
    
     public void drawButtonPlaceShip(int a){
         
-        switch(a){
-            case 11 :
-               button11.setBackground(Color.BLUE);
-                break;
-            case 12 :
-                
-                break;
-            case 13 :
-                
-                break;
-            case 14 :
-                
-                break;
-            case 15 :
-                
-                break;
-            case 16 :
-                
-                break;    
-            case 17 :
-                
-                break;
-            case 21 :
-                
-                break;
-            case 22 :
-                
-                break;
-            case 23 :
-                
-                break;
-            case 24 :
-                
-                break;
-            case 25 :
-                
-                 break;
-            case 26 :
-                
-                break;
-            case 27 :
-                
-                break;
-            case 31 :
-                
-                break;
-            case 32 :
-                
-                break;    
-            case 33 :
-                
-                break;
-            case 34 :
-                
-                break;
-            case 35 :
-                
-                break;
-            case 36 :
-                
-                break;    
-            case 37 :
-                
-                break;
-            case 41 :
-                
-                break;
-            case 42 :
-                
-                break;
-            case 43 :
-                
-                break;    
-            case 44 :
-                
-                break;
-            case 45 :
-                
-                break;    
-            case 46 :
-                
-                break;
-            case 47 :
-                
-                break;    
-            case 51 :
-                
-                break;
-            case 52 :
-                
-                break;        
-            case 53 :
-                
-                break;
-            case 54 :
-                
-                break;    
-            case 55 :
-                
-                break;
-            case 56 :
-                
-                break;    
-            case 57 :
-                
-                break;
-            case 61 :
-                
-                break;    
-            case 62 :
-                
-                break;
-            case 63 :
-                
-                break;    
-            case 64 :
-                
-                break;
-            case 65 :
-                
-                break;
-            case 66 :
-                
-                break;
-            case 67 :
-                
-                break;
-            case 71 :
-                
-                break;
-            case 72 :
-                
-                break;    
-            case 73 :
-                
-                break;
-            case 74 :
-                
-                break;    
-            case 75 :
-                
-                break;
-            case 76 :
-                
-                break;    
-            case 77 :
-                
-                break;
-            
-            default:
-                
-                
-  
-  
-        }
         
+        
+    }  
+
     
-    }    
 }

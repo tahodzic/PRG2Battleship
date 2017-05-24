@@ -17,9 +17,11 @@ public class Ship {
     private final int length;
     private boolean isAlive;
     private final ArrayList<Field> fields;
+    private boolean fieldsSet;
     
     public Ship(int length) {
         this.isAlive = true;
+        this.fieldsSet = false;
         this.length = length;
         this.fields = new ArrayList<>();
     }
@@ -33,8 +35,10 @@ public class Ship {
         if(fields.size() < length && isFieldValid(field)) {
             fields.add(field);
             field.setState(FieldState.SHIP);
+            g.setIsValid(true);
             return true;
         }
+        g.setIsValid(false);
         return false;
     }
     
@@ -111,6 +115,14 @@ public class Ship {
     
     public int getLength() {
         return this.length;
+    }
+    
+    public void setFieldsSet(boolean fieldsSet) {
+        this.fieldsSet = fieldsSet;
+    }
+    
+    public boolean getFieldsSet() {
+        return this.fieldsSet;
     }
     
     // For testing purpose

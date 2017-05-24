@@ -9,15 +9,17 @@ import Model.GameModel;
 import View.Grid;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
 /**
  *
  * @author Elia Grifo
  */
 public class GridController implements ActionListener {
+    private Grid view;
     
     private static int chosenLength = 0;
-    private GameModel gameModel = new GameModel();
+    private GameModel gameModel;
     
     public GridController() {
         
@@ -25,7 +27,11 @@ public class GridController implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        System.out.println();
+        String s = ((JButton)e.getSource()).getText();
+        System.out.println(s);
+        int x = Integer.valueOf(s)/10;
+        int y = Integer.valueOf(s) % 10;
+        gameModel.runGame(4,x, y);
     }
     
     public String resolveActionCommand(String string) {
@@ -99,4 +105,11 @@ public class GridController implements ActionListener {
         return chosenLength;
     }
     
+    public void addGameModel(GameModel model){
+        gameModel = model;
+    }
+    
+    public void addView(Grid view){
+        this.view = view;
+    }
 }

@@ -48,6 +48,8 @@ public class GameModel extends Observable{
     public void instantiateComputerOpponent(){
       compOpponent = new ComputerOpponent();
       state = gameState.PREPARING_GRID;
+      //setChanged();
+      //notifyObservers();
     }
     
     public void instantiateNetworkOpponent(){
@@ -64,6 +66,9 @@ public class GameModel extends Observable{
                     ships.add(ship);
                     fieldCount = length - 1;
                     shipInCreation = true;
+                    GameGrid test = playerOne.myGrid;
+                    setChanged();
+                    notifyObservers(test);
                 }
                 else {
                     ship.addField(posX, posY, playerOne.myGrid);

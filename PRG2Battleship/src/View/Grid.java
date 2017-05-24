@@ -153,11 +153,12 @@ public class Grid extends JFrame implements Observer{
    
     public Grid() {
          super("Grid");
+         setLocationRelativeTo(null);
          int a = 1;
          int b = 1;
          for(int i = 0; i < 7; i++){
             for(int j = 0; j < 7; j++){
-                String s = Integer.toString(a);
+                String s = Integer.toString(i+1).concat(Integer.toString(j+1));
                 button1[i][j] = new JButton(s);
                 a++;
             }
@@ -171,13 +172,14 @@ public class Grid extends JFrame implements Observer{
          
         for(int i = 0; i < 7; i++){
             for(int j = 0; j < 7; j++){
-                button1[i][j].setForeground(new Color(255, 255, 255, 0));
+                button1[i][j].setForeground(Color.BLUE);
+                button1[i][j].setBackground(Color.BLUE);
             }
         }
          
         for(int i = 0; i < 7; i++){
             for(int j = 0; j < 7; j++){
-                String s = Integer.toString(b);
+                String s = Integer.toString(i+1).concat(Integer.toString(j+1));
                 button2[i][j] = new JButton(s);
                 b++;
             }
@@ -192,11 +194,12 @@ public class Grid extends JFrame implements Observer{
        for(int i = 0; i < 7; i++){
             for(int j = 0; j < 7; j++){
                 
-                button2[i][j].setForeground(new Color(255, 255, 255, 0));
+                button2[i][j].setForeground(Color.BLUE);
+                button2[i][j].setBackground(Color.BLUE);
             }
         }
        
-       for(int i = 0; i < 7; i++){
+      /* for(int i = 0; i < 7; i++){
             for(int j = 0; j < 7; j++){
                 liste1[i][j].add(button1[i][j]);
                 
@@ -208,7 +211,7 @@ public class Grid extends JFrame implements Observer{
                 
                 liste2[i][j].add(button2[i][j]);
             }
-        }
+        }*/
     
         setSize(800, 600);
         panel2.setLayout(new GridLayout(7,7));
@@ -493,11 +496,26 @@ public class Grid extends JFrame implements Observer{
 
     @Override
     public void update(Observable o, Object arg) {
-        
-       //switch(((GameModel)o).getState()){
-            
-        
-        //}
+       GameGrid grid = (GameGrid)arg;
+       int x, y;
+       for(y = 0; y < 7; y++){
+            for(x = 0; x < 7; x++){
+                switch(grid.getField(x+1,y+1).getState()){            
+                    case HIT: button1[x][y].setBackground(Color.RED); 
+                              button1[x][y].setForeground(Color.RED); 
+                              break;
+                    case WATER: button1[x][y].setBackground(Color.BLUE);
+                              button1[x][y].setForeground(Color.BLUE); 
+                              break;
+                    case MISSED: button1[x][y].setBackground(Color.WHITE); 
+                              button1[x][y].setForeground(Color.WHITE); 
+                              break;
+                    case SHIP: button1[x][y].setBackground(Color.BLACK); 
+                              button1[x][y].setForeground(Color.BLACK); 
+                              break;
+                }
+            }
+       }
         
         
     }

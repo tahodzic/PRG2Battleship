@@ -13,6 +13,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.Observable;
+import java.util.Observer;
 import java.util.Set;
 import javax.swing.*;
 import javax.swing.JFrame;
@@ -23,7 +25,7 @@ import javax.swing.WindowConstants;
  /*
  * @author Ueli Steimen
  */
-public class Startview extends JFrame {
+public class Startview extends JFrame implements Observer {
     
     private final JPanel panel1 = new JPanel();
     private final JLabel label = new JLabel("Name: ");
@@ -71,5 +73,15 @@ public class Startview extends JFrame {
         
         Startview n = new Startview();
        
+    }
+
+    public void addController(ActionListener controller){
+        button.addActionListener(controller);
+        button1.addActionListener(controller);
+    }
+    
+    @Override
+    public void update(Observable o, Object arg) {
+        
     }
 }

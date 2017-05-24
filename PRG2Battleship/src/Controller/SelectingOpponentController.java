@@ -6,26 +6,38 @@
 package Controller;
 
 import Model.GameModel;
+import View.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.JButton;
 
 /**
  *
  * @author Damir Hodzic
  */
 public class SelectingOpponentController implements ActionListener{
-    public GameModel model = new GameModel();
+    public GameModel model;
+    private Startview view;
+    
+    public void addGameModel(GameModel model){
+        this.model = model;
+    }
+    
+    public void addView(Startview view){
+        this.view = view;
+    }
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        String ch = (e.getActionCommand());
+        String ch = ((JButton)e.getSource()).getActionCommand();
         
         switch (ch){
-        case "ComputerOpponent":   //TODO
+        case "Computer":   //TODO
                                 model.instantiateComputerOpponent();
+                                
                                 break;
-        case "NetworkOpponent" :   //TODO
+        case "Netzwerk" :   //TODO
                                 model.instantiateNetworkOpponent();
                                 break;
 

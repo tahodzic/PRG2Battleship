@@ -371,6 +371,10 @@ public class Grid extends JFrame implements Observer{
     
     
     public void addContorller( ActionListener controller){
+        ship1.addActionListener(controller);
+        ship2.addActionListener(controller);
+        ship3.addActionListener(controller);
+        ship4.addActionListener(controller);
         
         for(int i = 0; i < 7; i++){
             for(int j = 0; j < 7; j++){
@@ -498,22 +502,47 @@ public class Grid extends JFrame implements Observer{
     public void update(Observable o, Object arg) {
        GameGrid grid = (GameGrid)arg;
        int x, y;
-       for(y = 0; y < 7; y++){
-            for(x = 0; x < 7; x++){
-                switch(grid.getField(x+1,y+1).getState()){            
-                    case HIT: button1[x][y].setBackground(Color.RED); 
-                              button1[x][y].setForeground(Color.RED); 
-                              break;
-                    case WATER: button1[x][y].setBackground(Color.BLUE);
-                              button1[x][y].setForeground(Color.BLUE); 
-                              break;
-                    case MISSED: button1[x][y].setBackground(Color.WHITE); 
-                              button1[x][y].setForeground(Color.WHITE); 
-                              break;
-                    case SHIP: button1[x][y].setBackground(Color.BLACK); 
-                              button1[x][y].setForeground(Color.BLACK); 
-                              break;
-                }
+       
+       //If playerOne gamegrid
+       if (grid.getPrimaryGrid()){
+            for(y = 0; y < 7; y++){
+                 for(x = 0; x < 7; x++){
+                     switch(grid.getField(x+1,y+1).getState()){            
+                         case HIT: button1[x][y].setBackground(Color.RED); 
+                                   button1[x][y].setForeground(Color.RED); 
+                                   break;
+                         case WATER: button1[x][y].setBackground(Color.BLUE);
+                                   button1[x][y].setForeground(Color.BLUE); 
+                                   break;
+                         case MISSED: button1[x][y].setBackground(Color.WHITE); 
+                                   button1[x][y].setForeground(Color.WHITE); 
+                                   break;
+                         case SHIP: button1[x][y].setBackground(Color.BLACK); 
+                                   button1[x][y].setForeground(Color.BLACK); 
+                                   break;
+                     }
+                 }
+            }
+       }
+       //If opponent game grid
+       else if (!grid.getPrimaryGrid()){
+            for(y = 0; y < 7; y++){
+                 for(x = 0; x < 7; x++){
+                     switch(grid.getField(x+1,y+1).getState()){            
+                         case HIT: button2[x][y].setBackground(Color.RED); 
+                                   button2[x][y].setForeground(Color.RED); 
+                                   break;
+                         case WATER: button2[x][y].setBackground(Color.BLUE);
+                                   button2[x][y].setForeground(Color.BLUE); 
+                                   break;
+                         case MISSED: button2[x][y].setBackground(Color.WHITE); 
+                                   button2[x][y].setForeground(Color.WHITE); 
+                                   break;
+                         case SHIP: button2[x][y].setBackground(Color.BLACK); 
+                                   button2[x][y].setForeground(Color.BLACK); 
+                                   break;
+                     }
+                 }
             }
        }
         

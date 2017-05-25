@@ -28,10 +28,12 @@ public class GridController implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         String s = ((JButton)e.getSource()).getText();
-        System.out.println(s);
-        int x = Integer.valueOf(s)/10;
-        int y = Integer.valueOf(s) % 10;
-        gameModel.runGame(4,x, y);
+        String sNumbers = s.substring(0,1);
+        chosenLength = Integer.valueOf(sNumbers);
+        if(s.contains("Schiff")){
+            gameModel.setShipLengthChosenByUser(chosenLength);
+        }
+        else gameModel.runGame(getX(s),getY(s));
     }
     
     public String resolveActionCommand(String string) {
@@ -64,16 +66,16 @@ public class GridController implements ActionListener {
         switch(string.length()) {
             case 1 :
                 if(string.equalsIgnoreCase("p")) {
-                    gameModel.runGame(0, 0, 0);
+                    //gameModel.runGame(0, 0, 0);
                 } else {
-                    gameModel.runGame(chosenLength, 0, 0);
+                   // gameModel.runGame(chosenLength, 0, 0);
                 }
             break;
             case 2 :
-                gameModel.runGame(chosenLength, x, y);
+               // gameModel.runGame(chosenLength, x, y);
             break;
             case 3 :
-                gameModel.runGame(-1, x, y);
+                //gameModel.runGame(-1, x, y);
             break;
             default:
                
@@ -89,12 +91,12 @@ public class GridController implements ActionListener {
     
     public int getX(String string) {
         int i = Integer.valueOf(string);
-        return (i % 7 == 0) ? 7 : (i % 7);
+        return (i/10);
     }
     
     public int getY(String string) {
         int i = Integer.valueOf(string);
-        return (i % 7 == 0) ? (i/7) : (i/7+1);
+        return (i % 10);
     }
     
     public static void setChosenLength(int i) {

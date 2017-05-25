@@ -34,8 +34,12 @@ public class GameModel extends Observable{
     // private GameGrid gameGrid;
     private ArrayList<Ship> ships = new ArrayList<Ship>();
     private Ship ship;
-    
+    private int shipLengthChosenByUser = 0;
             
+    public void setShipLengthChosenByUser(int i){
+        shipLengthChosenByUser = i;
+    }
+    
     public GameModel(){
       playerOne = new Player();  
       state = gameState.SELECTING_OPPONENT;
@@ -57,14 +61,14 @@ public class GameModel extends Observable{
       netPlay = true;
     }
     
-    public void runGame(int length, int posX, int posY){
+    public void runGame(int posX, int posY){
         switch (state){
             case PREPARING_GRID:
                 if(!shipInCreation){
-                    ship = new Ship(length);
+                    ship = new Ship(shipLengthChosenByUser);
                     ship.addField(posX, posY, playerOne.myGrid);
                     ships.add(ship);
-                    fieldCount = length - 1;
+                    fieldCount = shipLengthChosenByUser - 1;
                     shipInCreation = true;
                     GameGrid test = playerOne.myGrid;
                     setChanged();
@@ -79,7 +83,7 @@ public class GameModel extends Observable{
                 }
                 
                 //change to play state
-                if(length == -1){
+                if(shipLengthChosenByUser == -1){
                     playerOne.myGrid.addShip (ship);
                     state = gameState.PLAY;
                 }

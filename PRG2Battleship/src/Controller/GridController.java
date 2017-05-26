@@ -16,6 +16,7 @@ import javax.swing.JButton;
  * @author Elia Grifo
  */
 public class GridController implements ActionListener {
+    
     private Grid view;
     
     private static int chosenLength = 0;
@@ -62,7 +63,7 @@ public class GridController implements ActionListener {
     public void doCommand(String string) {
         String s = resolveActionCommand(string);
         int x = s.charAt(1);
-                int y = s.charAt(0);
+        int y = s.charAt(0);
         switch(string.length()) {
             case 1 :
                 if(string.equalsIgnoreCase("p")) {
@@ -91,12 +92,12 @@ public class GridController implements ActionListener {
     
     public int getX(String string) {
         int i = Integer.valueOf(string);
-        return (i/10);
+        return (i % 10);
     }
     
     public int getY(String string) {
         int i = Integer.valueOf(string);
-        return (i % 10);
+        return (i/10);
     }
     
     public static void setChosenLength(int i) {

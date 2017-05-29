@@ -37,7 +37,7 @@ public class GameModel extends Observable {
     private ArrayList<Ship> ships = new ArrayList<Ship>();
     private Ship ship;
     private int shipLengthChosenByUser = 0;
-            
+    
     public void setShipLengthChosenByUser(int i){
         shipLengthChosenByUser = i;
         fieldCount = i;
@@ -154,10 +154,7 @@ public class GameModel extends Observable {
                         playerOneTurn = true;
                         setChanged();
                         notifyObservers(playerOne.myGrid);
-                    }
-                    else{
-
-                        
+                        if(isDead()) state = gameState.FINISHED;
                     }
                 }
 
@@ -167,6 +164,15 @@ public class GameModel extends Observable {
             
             
         }
+    }
+    
+    public boolean isDead(){
+        for(Ship s: ships){
+            if(s.isStillAlive()){
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean getShipsComplete() {

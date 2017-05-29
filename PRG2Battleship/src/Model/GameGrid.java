@@ -17,6 +17,7 @@ public class GameGrid {
     private final ArrayList<Ship> ships;
     private Ship ship1, ship2, ship3, ship4, ship5, ship6, ship7, ship8, ship9, ship10;
     private boolean isValid;
+    private boolean hasWon = false;
     
     // true if the grid is the primary grid not the tracking/opponent grid
     private final boolean primaryGrid;
@@ -27,6 +28,12 @@ public class GameGrid {
         initGrid();
         initShips();
     }  
+    
+    public boolean getHasWon(){ return hasWon;}
+    
+    public void setHasWon(boolean b){
+        hasWon = b;
+    }
     
     public void initGrid() {
         for(int i = 0; i < 7; i++) {
@@ -116,5 +123,6 @@ public class GameGrid {
             System.out.println(ship.getLength());
         }
     }
+ 
     
 }

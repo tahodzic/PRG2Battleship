@@ -38,7 +38,7 @@ public class SelectingOpponentController implements ActionListener{
             break;
             case "Netzwerk" :
                 model.instantiateNetworkOpponent();
-                view.dispose();
+                
             break;
             default :
             break;

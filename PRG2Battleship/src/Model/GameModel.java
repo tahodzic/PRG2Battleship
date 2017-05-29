@@ -72,7 +72,8 @@ public class GameModel extends Observable {
     
     public void setStateToPlay(){
         this.state = gameState.PLAY;
-        
+        playerOne.myGrid.setNumberOfShips();
+        setOpponentShips(playerOne.myGrid.getNumberOfShips());
         setChanged();
         //in update method user needs to be informed
         notifyObservers(compOpponent.oppGrid);     

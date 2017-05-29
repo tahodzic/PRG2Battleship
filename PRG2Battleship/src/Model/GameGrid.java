@@ -18,6 +18,7 @@ public class GameGrid {
     private Ship ship1, ship2, ship3, ship4, ship5, ship6, ship7, ship8, ship9, ship10;
     private boolean isValid;
     private boolean hasWon = false;
+    private int numberOfShips;
     
     // true if the grid is the primary grid not the tracking/opponent grid
     private final boolean primaryGrid;
@@ -115,6 +116,20 @@ public class GameGrid {
             }
         }
         throw new NullPointerException();
+    }
+    
+    public void setNumberOfShips() {
+        int counter = 0;
+        for(Ship ship : ships) {
+            if(ship.getFieldsSet()) {
+                counter++;
+            }
+        }
+        numberOfShips = counter;
+    }
+    
+    public int getNumberOfShips() {
+        return this.numberOfShips;
     }
     
     // For testing purpose

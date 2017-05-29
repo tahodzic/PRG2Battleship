@@ -49,8 +49,6 @@ public class Grid extends JFrame implements Observer{
                 button1[i][j] = b1;
                 panel2.add(b1);
                 b1.setBackground(Color.BLUE);
-                b1.setOpaque(true);
-                b1.setBorderPainted(false);
                 b1.setForeground(Color.BLUE);
                 
                 JButton b2 = new JButton("0"+(i+1)+""+(j+1));

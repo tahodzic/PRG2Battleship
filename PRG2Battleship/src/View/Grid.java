@@ -49,6 +49,8 @@ public class Grid extends JFrame implements Observer{
                 button1[i][j] = b1;
                 panel2.add(b1);
                 b1.setBackground(Color.BLUE);
+                b1.setOpaque(true);
+                b1.setBorderPainted(false);
                 b1.setForeground(Color.BLUE);
                 
                 JButton b2 = new JButton("0"+(i+1)+""+(j+1));
@@ -155,7 +157,7 @@ public class Grid extends JFrame implements Observer{
             for(y = 0; y < 7; y++){
                  for(x = 0; x < 7; x++){
                      switch(grid.getField(x+1,y+1).getState()){            
-                         case HIT: button1[y][x].setBackground(Color.RED); 
+                         case HIT: button1[y][x].setBackground(Color.RED);
                                    button1[y][x].setForeground(Color.RED); 
                                    break;
                          case WATER: button1[y][x].setBackground(Color.BLUE);
@@ -184,9 +186,6 @@ public class Grid extends JFrame implements Observer{
                                    break;
                          case MISSED: button2[y][x].setBackground(Color.WHITE); 
                                       button2[y][x].setForeground(Color.WHITE); 
-                                   break;
-                         case SHIP: button2[y][x].setBackground(Color.BLACK); 
-                                    button2[y][x].setForeground(Color.BLACK); 
                                    break;
                      }
                  }

@@ -175,6 +175,154 @@ public class GameModel extends Observable {
         return true;
     }
 
+    public void setOpponentShips(int numberOfShips) {
+        Ship s;
+        for(int i = 0; i < numberOfShips; i++) {
+            do {
+                int rand = random(1, 4);
+                s = (getRandomShip(compOpponent.oppGrid, rand));  
+            }while(!s.getFieldsSet());
+            compOpponent.oppGrid.addShip(s);
+        }
+    }
+    
+    public Ship getRandomShip(GameGrid g, int length) {
+        int rand = random(1, 5);
+        switch(length) {
+            case 1:
+                switch(rand) {
+                    case 1:
+                        Ship s1 = g.findShip(length);
+                        s1.addField(2, 4, g);
+                    return s1;
+                    case 2:
+                        Ship s2 = g.findShip(length);
+                        s2.addField(6, 7, g);
+                    return s2;
+                    case 3:
+                        Ship s3 = g.findShip(length);
+                        s3.addField(2, 3, g);
+                    return s3;
+                    case 4:
+                        Ship s4 = g.findShip(length);
+                        s4.addField(5, 2, g);
+                    return s4;
+                    case 5:
+                        Ship s5 = g.findShip(length);
+                        s5.addField(3, 1, g);
+                    return s5;
+                }
+            break;
+            case 2:
+               switch(rand) {
+                    case 1:
+                        Ship s1 = g.findShip(length);
+                        s1.addField(3, 5, g);
+                        s1.addField(4, 5, g);
+                    return s1;
+                    case 2:
+                        Ship s2 = g.findShip(length);
+                        s2.addField(7, 6, g);
+                        s2.addField(7, 7, g);
+                    return s2;
+                    case 3:
+                        Ship s3 = g.findShip(length);
+                        s3.addField(2, 1, g);
+                        s3.addField(1, 1, g);
+                    return s3;
+                    case 4:
+                        Ship s4 = g.findShip(length);
+                        s4.addField(5, 6, g);
+                        s4.addField(5, 5, g);
+                    return s4;
+                    case 5:
+                        Ship s5 = g.findShip(length);
+                        s5.addField(1, 7, g);
+                        s5.addField(2, 7, g);
+                    return s5;
+                }
+            break;
+            case 3:
+                switch(rand) {
+                    case 1:
+                        Ship s1 = g.findShip(length);
+                        s1.addField(4, 7, g);
+                        s1.addField(4, 6, g);
+                        s1.addField(4, 5, g);
+                    return s1;
+                    case 2:
+                        Ship s2 = g.findShip(length);
+                        s2.addField(2, 2, g);
+                        s2.addField(3, 2, g);
+                        s2.addField(4, 2, g);
+                    return s2;
+                    case 3:
+                        Ship s3 = g.findShip(length);
+                        s3.addField(6, 6, g);
+                        s3.addField(5, 6, g);
+                        s3.addField(4, 6, g);
+                    return s3;
+                    case 4:
+                        Ship s4 = g.findShip(length);
+                        s4.addField(3, 3, g);
+                        s4.addField(3, 4, g);
+                        s4.addField(3, 5, g);
+                    return s4;
+                    case 5:
+                        Ship s5 = g.findShip(length);
+                        s5.addField(6, 1, g);
+                        s5.addField(5, 1, g);
+                        s5.addField(4, 1, g);
+                    return s5;
+                }
+            break;
+            case 4:
+                switch(rand) {
+                    case 1:
+                        Ship s1 = g.findShip(length);
+                        s1.addField(7, 3, g);
+                        s1.addField(7, 2, g);
+                        s1.addField(7, 4, g);
+                        s1.addField(7, 5, g);
+                    return s1;
+                    case 2:
+                        Ship s2 = g.findShip(length);
+                        s2.addField(5, 2, g);
+                        s2.addField(5, 3, g);
+                        s2.addField(5, 4, g);
+                        s2.addField(5, 5, g);
+                    return s2;
+                    case 3:
+                        Ship s3 = g.findShip(length);
+                        s3.addField(6, 6, g);
+                        s3.addField(7, 6, g);
+                        s3.addField(5, 6, g);
+                        s3.addField(4, 6, g);
+                    return s3;
+                    case 4:
+                        Ship s4 = g.findShip(length);
+                        s4.addField(3, 5, g);
+                        s4.addField(3, 4, g);
+                        s4.addField(3, 7, g);
+                        s4.addField(3, 6, g);
+                    return s4;
+                    case 5:
+                        Ship s5 = g.findShip(length);
+                        s5.addField(6, 5, g);
+                        s5.addField(5, 5, g);
+                        s5.addField(4, 5, g);
+                        s5.addField(7, 5, g);
+                    return s5;
+                }
+            break;
+        }
+        throw new NullPointerException();
+    }
+    
+    public int random(int min, int max) {
+        return (int) (Math.random()*(max)+min);
+    }
+    
     public boolean getShipsComplete() {
         return this.shipsComplete;
     }

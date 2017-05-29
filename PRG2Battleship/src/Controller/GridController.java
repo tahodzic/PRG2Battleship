@@ -54,7 +54,7 @@ public class GridController implements ActionListener {
                 } else {
                     view.displayPlayMode();
                     gameModel.setStateToPlay();
-                    updateTurn();
+                    view.setLabel("Spiel gestartet");
                 }
             break;
             case 2 :
@@ -86,7 +86,6 @@ public class GridController implements ActionListener {
                 }
             break;
             case PLAY :
-                updateTurn();
                 if(!primaryGrid) {
                     gameModel.runGame(getX(string), getY(string));
                 } else {
@@ -94,14 +93,6 @@ public class GridController implements ActionListener {
                     view.highligthLabel();
                 }
             break;
-        }
-    }
-    
-    public void updateTurn() {
-        if(!gameModel.getPlayerOneTurn()) {
-                view.setLabel("Du bist am Zug");
-            } else {
-                view.setLabel("Warte auf den Gegner");
         }
     }
     

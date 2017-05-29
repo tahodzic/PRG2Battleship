@@ -36,12 +36,12 @@ public class ComputerOpponent implements IOpponent{
             f_state= checkfield(g, posX, posY);
 
         }while(f_state==MISSED || f_state==HIT);  
-        if(f_state==SHIP){
-            treffer=1;
-        }
-        else{
-            treffer=0;
-        }
+        //if(f_state==SHIP){
+          //  treffer=1;
+        //}
+        //else{
+          //  treffer=0;
+        //}
         g.attackField(posX, posY);
     }
     else{

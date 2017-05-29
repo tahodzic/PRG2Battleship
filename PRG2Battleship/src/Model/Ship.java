@@ -122,7 +122,7 @@ public class Ship {
     }
     
     public boolean getFieldsSet() {
-        return this.fieldsSet;
+        return (this.length == fields.size());
     }
     
     // For testing purpose

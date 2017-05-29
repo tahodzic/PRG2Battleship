@@ -40,12 +40,19 @@ public class GameModel extends Observable {
             
     public void setShipLengthChosenByUser(int i){
         shipLengthChosenByUser = i;
+        fieldCount = i;
     }
     
     public GameModel(){
       playerOne = new Player();  
+
+      state = GameState.SELECTING_OPPONENT;
+      //playerOneTurn = new Random().nextBoolean();   
+      playerOneTurn = true;
+
       state = GameState.SELECTING_OPPONENT;
       playerOneTurn = new Random().nextBoolean();     
+
       //Initialize gameGrid
       
  
@@ -63,44 +70,93 @@ public class GameModel extends Observable {
       netPlay = true;
     }
     
+    public void setStateToPlay(){
+        this.state = GameState.PLAY;
+        compOpponent.oppGrid = playerOne.myGrid;
+        setChanged();
+        //in update method user needs to be informed
+        notifyObservers(compOpponent.oppGrid);     
+    }
+    
     public void runGame(int posX, int posY){
         switch (state){
             case PREPARING_GRID:
                 if(!shipInCreation){
-                    ship = new Ship(shipLengthChosenByUser);
-                    ship.addField(posX, posY, playerOne.myGrid);
-                    ships.add(ship);
-                    fieldCount = shipLengthChosenByUser - 1;
-                    shipInCreation = true;
-                    GameGrid test = playerOne.myGrid;
-                    setChanged();
-                    notifyObservers(test);
+                    if(shipLengthChosenByUser == 0){
+                        //invalid field clicked by user
+                        playerOne.myGrid.setIsValid(false);
+                        setChanged();
+                        //in update method user needs to be informed
+                        notifyObservers(playerOne.myGrid);                        
+                    }
+                    else { 
+                        ship = playerOne.myGrid.findShip(shipLengthChosenByUser);
+                        
+                        if(ship.addField(posY, posX, playerOne.myGrid)){
+                     
+                            ships.add(ship);
+                            fieldCount = fieldCount - 1;
+                            shipInCreation = true;
+                            if(fieldCount == 0){
+                                //one ship finished
+                                shipInCreation = false;
+                                ship.setFieldsSet(true);
+                                shipLengthChosenByUser = 0;
+                            }                                   
+                            setChanged();
+                            notifyObservers(playerOne.myGrid);
+                        } else {
+                            //invalid field clicked by user
+                            playerOne.myGrid.setIsValid(false);
+                            setChanged();
+                            //in update method user needs to be informed
+                            notifyObservers(playerOne.myGrid);
+                        }
+                    }
                 }
                 else {
-                    ship.addField(posX, posY, playerOne.myGrid);
-                    fieldCount--;
-                    if(fieldCount == 0)
-                        //one ship finished
-                        shipInCreation = false;
+                    ship = playerOne.myGrid.findShip(shipLengthChosenByUser);
+                    if(ship.addField(posY, posX, playerOne.myGrid)){
+                        fieldCount--;
+                        if(fieldCount == 0){
+                            //one ship finished
+                            shipInCreation = false;
+                            ship.setFieldsSet(true);
+                            shipLengthChosenByUser = 0;
+                            ship = null;
+                        }
+                        setChanged();
+                        //in update method user needs to be informed
+                        notifyObservers(playerOne.myGrid);
+                    } else {
+                        //invalid field clicked by user
+                        playerOne.myGrid.setIsValid(false);
+                        setChanged();
+                        //in update method user needs to be informed
+                        notifyObservers(playerOne.myGrid);
+                    }
                 }
-                
+
                 //change to play state
                 if(shipLengthChosenByUser == -1){
                     playerOne.myGrid.addShip (ship);
                     state = GameState.PLAY;
                 }
+
                 break;
             case PLAY: 
-                if(netPlay){
+                if(!netPlay){
                     if(playerOneTurn){
                         compOpponent.oppGrid.attackField(posX, posY);
+                        playerOneTurn = false;
                         setChanged();
-                        notifyObservers();
+                        notifyObservers(compOpponent.oppGrid);
                     }
                     else{
                         compOpponent.attackField(playerOne.myGrid);
+                        playerOneTurn = true;
                         setChanged();
-                        notifyObservers();
+                        notifyObservers(playerOne.myGrid);
                         
                     }
                 }

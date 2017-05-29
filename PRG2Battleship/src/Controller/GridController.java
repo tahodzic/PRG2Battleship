@@ -6,7 +6,6 @@
 package Controller;
 
 import Model.GameModel;
-import Model.GameModel.gameState;
 import View.Grid;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -88,13 +87,18 @@ public class GridController implements ActionListener {
             break;
             case PLAY :
                 updateTurn();
-                gameModel.runGame(getX(string), getY(string));
+                if(!primaryGrid) {
+                    gameModel.runGame(getX(string), getY(string));
+                } else {
+                    view.setLabel("Falsches Spielfeld!");
+                    view.highligthLabel();
+                }
             break;
         }
     }
     
     public void updateTurn() {
-        if(gameModel.getPlayerOneTurn()) {
+        if(!gameModel.getPlayerOneTurn()) {
                 view.setLabel("Du bist am Zug");
             } else {
                 view.setLabel("Warte auf den Gegner");

@@ -49,6 +49,15 @@ public class GameGrid {
         addShip(ship10 = new Ship(4));
     }
     
+    public boolean shipsComplete() {
+        for(Ship ship : ships) {
+            if(!ship.getFieldsSet()) {
+                return false;
+            }
+        }
+        return true;
+    }
+    
     public boolean shipAvailable(int length) {
         if(this.findShip(length) == null) {
             return false;
@@ -63,7 +72,7 @@ public class GameGrid {
                 return ship;
             }
         }
-        return null;
+        throw new NullPointerException();
     }
     
     public boolean attackField(int x, int y) {

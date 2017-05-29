@@ -10,7 +10,6 @@ import View.*;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.JButton;
 
 /**
  *
@@ -30,21 +29,19 @@ public class SelectingOpponentController implements ActionListener{
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        String ch = ((JButton)e.getSource()).getActionCommand();
-        
-        switch (ch){
-        case "Computer":   //TODO
-                                model.instantiateComputerOpponent();
-                                
-                                break;
-        case "Netzwerk" :   //TODO
-                                model.instantiateNetworkOpponent();
-                                break;
-
-        default:     break;
-    }
-    }
-    
-
-    
+        String s = e.getActionCommand();
+        switch (s){
+            case "Computer" :
+                model.instantiateComputerOpponent();
+                view.dispose();
+                Main.Main.grid.setVisible(true);
+            break;
+            case "Netzwerk" :
+                model.instantiateNetworkOpponent();
+                view.dispose();
+            break;
+            default :
+            break;
+        }
+    } 
 }

@@ -13,16 +13,18 @@ import java.util.Random;
  *
  * @author Damir Hodzic
  */
-public class GameModel extends Observable{
-    public enum gameState{
+public class GameModel extends Observable {
+    
+    public enum GameState {
         SELECTING_OPPONENT,
         PREPARING_GRID,
         PLAY,
         FINISHED
       }
     
-    private gameState state;
+    private GameState state;
     private boolean shipInCreation = false, netPlay = false;
+    private boolean shipsComplete = false;
     
     //count for ship creation, helps decide when to start with new ship
     // or to keep filling the old ship
@@ -42,7 +44,7 @@ public class GameModel extends Observable{
     
     public GameModel(){
       playerOne = new Player();  
-      state = gameState.SELECTING_OPPONENT;
+      state = GameState.SELECTING_OPPONENT;
       playerOneTurn = new Random().nextBoolean();     
       //Initialize gameGrid
       
@@ -51,7 +53,7 @@ public class GameModel extends Observable{
 
     public void instantiateComputerOpponent(){
       compOpponent = new ComputerOpponent();
-      state = gameState.PREPARING_GRID;
+      state = GameState.PREPARING_GRID;
       //setChanged();
       //notifyObservers();
     }
@@ -85,7 +87,7 @@ public class GameModel extends Observable{
                 //change to play state
                 if(shipLengthChosenByUser == -1){
                     playerOne.myGrid.addShip (ship);
-                    state = gameState.PLAY;
+                    state = GameState.PLAY;
                 }
                 break;
             case PLAY: 
@@ -111,4 +113,23 @@ public class GameModel extends Observable{
         }
     }
 
+    public boolean getShipsComplete() {
+        return this.shipsComplete;
+    }
+    
+    public void setShipsComplete(boolean shipsComplete) {
+        this.shipsComplete = shipsComplete;
+    }
+    
+    public GameState getState() {
+        return this.state;
+    }
+    
+    public void setState(GameState state) {
+        this.state = state;
+    }
+    
+    public int getFieldCount() {
+        return this.fieldCount;
+    }
 }

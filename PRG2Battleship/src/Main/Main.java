@@ -12,8 +12,8 @@ import Controller.*;
  * @author Damir Hodzic
  */
 public class Main {
-    private GridController gridController = new GridController();
-    public Grid grid;
+    public static GridController gridController;
+    public static Grid grid;
     /**
      * @param args the command line arguments
      */
@@ -27,23 +27,14 @@ public class Main {
         SelectingOpponentController startController = new SelectingOpponentController();
         startController.addView(myStartView);
         startController.addGameModel(myModel);
-        myStartView.addController(startController);
+        myStartView.addController(startController);       
         
-        
-        Grid grid = new Grid();
+        grid = new Grid();
         myModel.addObserver(grid);
-        GridController gridController = new GridController();
+        gridController = new GridController();
         gridController.addView(grid);
         gridController.addGameModel(myModel);
         grid.addContorller(gridController);
-        
-        
-        
-       // myModel.addObserver(myView);
-        
-        
-        
-        
+
     }
-    
 }

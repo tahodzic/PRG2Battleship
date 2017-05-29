@@ -53,28 +53,31 @@ public class GridController implements ActionListener {
                         view.highligthLabel();
                     }
                 } else {
-                    if(gameModel.getShipsComplete()) {
-                        view.displayPlayMode();
-                        gameModel.setState(gameState.PLAY);
-                    } else {
-                        view.setLabel("Noch nicht spielbereit!");
-                        view.highligthLabel();
-                    }
+                    view.displayPlayMode();
+                    gameModel.setStateToPlay();
+                    updateTurn();
                 }
             break;
             case 2 :
+                act(string);
+            break;
+        }
+    }
+    
+    public void act(String string) {
+        switch(gameModel.getState()) {
+            case PREPARING_GRID :
                 if(shipInCreation) {
                     if(!primaryGrid) {
                         view.setLabel("Falsches Spielfeld!");
                         view.highligthLabel();
                     } else {
                         gameModel.runGame(getX(string), getY(string));
-                        if(gameModel.getState() == gameState.PREPARING_GRID) {
-                            counter = chosenLength - gameModel.getFieldCount();
-                            view.setLabel("Gesetzte Felder: " +counter+ " von "+chosenLength);
-                            if(counter == chosenLength) {
-                                shipInCreation = false;
-                            }
+                        counter = chosenLength - gameModel.getFieldCount();
+                        view.setLabel("Gesetzte Felder: " +counter+ " von "+chosenLength);
+                        if(counter == chosenLength) {
+                            shipInCreation = false;
+                            chosenLength = 0;
                         }
                     }
                 } else {
@@ -83,6 +86,18 @@ public class GridController implements ActionListener {
                     chosenLength = 0;
                 }
             break;
+            case PLAY :
+                updateTurn();
+                gameModel.runGame(getX(string), getY(string));
+            break;
+        }
+    }
+    
+    public void updateTurn() {
+        if(gameModel.getPlayerOneTurn()) {
+                view.setLabel("Du bist am Zug");
+            } else {
+                view.setLabel("Warte auf den Gegner");
         }
     }
     

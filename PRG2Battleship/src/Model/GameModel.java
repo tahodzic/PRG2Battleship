@@ -93,7 +93,6 @@ public class GameModel extends Observable {
                         ship = playerOne.myGrid.findShip(shipLengthChosenByUser);
                         
                         if(ship.addField(posX, posY, playerOne.myGrid)){
-                     
                             ships.add(ship);
                             fieldCount = fieldCount - 1;
                             shipInCreation = true;
@@ -187,5 +186,9 @@ public class GameModel extends Observable {
     
     public int getFieldCount() {
         return this.fieldCount;
+    }
+    
+    public boolean getPlayerOneTurn() {
+        return this.playerOneTurn;
     }
 }

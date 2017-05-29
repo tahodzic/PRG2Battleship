@@ -15,14 +15,14 @@ import java.util.Random;
  */
 public class GameModel extends Observable {
     
-    public enum GameState {
+    public enum gameState {
         SELECTING_OPPONENT,
         PREPARING_GRID,
         PLAY,
         FINISHED
       }
     
-    private GameState state;
+    private gameState state;
     private boolean shipInCreation = false, netPlay = false;
     private boolean shipsComplete = false;
     
@@ -46,11 +46,11 @@ public class GameModel extends Observable {
     public GameModel(){
       playerOne = new Player();  
 
-      state = GameState.SELECTING_OPPONENT;
+      state = gameState.SELECTING_OPPONENT;
       //playerOneTurn = new Random().nextBoolean();   
       playerOneTurn = true;
 
-      state = GameState.SELECTING_OPPONENT;
+      state = gameState.SELECTING_OPPONENT;
       playerOneTurn = new Random().nextBoolean();     
 
       //Initialize gameGrid
@@ -60,7 +60,7 @@ public class GameModel extends Observable {
 
     public void instantiateComputerOpponent(){
       compOpponent = new ComputerOpponent();
-      state = GameState.PREPARING_GRID;
+      state = gameState.PREPARING_GRID;
       //setChanged();
       //notifyObservers();
     }
@@ -71,7 +71,7 @@ public class GameModel extends Observable {
     }
     
     public void setStateToPlay(){
-        this.state = GameState.PLAY;
+        this.state = gameState.PLAY;
         compOpponent.oppGrid = playerOne.myGrid;
         setChanged();
         //in update method user needs to be informed
@@ -140,7 +140,7 @@ public class GameModel extends Observable {
                 //change to play state
                 if(shipLengthChosenByUser == -1){
                     playerOne.myGrid.addShip (ship);
-                    state = GameState.PLAY;
+                    state = gameState.PLAY;
                 }
 
                 break;
@@ -177,11 +177,11 @@ public class GameModel extends Observable {
         this.shipsComplete = shipsComplete;
     }
     
-    public GameState getState() {
+    public gameState getState() {
         return this.state;
     }
     
-    public void setState(GameState state) {
+    public void setState(gameState state) {
         this.state = state;
     }
     

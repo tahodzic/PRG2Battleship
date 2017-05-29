@@ -35,6 +35,5 @@ public class Main {
         gridController.addView(grid);
         gridController.addGameModel(myModel);
         grid.addContorller(gridController);
-
     }
 }

@@ -6,7 +6,7 @@
 package Controller;
 
 import Model.GameModel;
-import Model.GameModel.GameState;
+import Model.GameModel.gameState;
 import View.Grid;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -21,13 +21,13 @@ public class GridController implements ActionListener {
     private static int chosenLength = 0;
     private GameModel gameModel;
     private boolean primaryGrid = false;
-    private boolean shipInCreation = false;
     private static int counter = 0;
+    private boolean shipInCreation = false;
     
     public GridController() {
         
     }
-
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         view.resetLabel();
@@ -55,7 +55,7 @@ public class GridController implements ActionListener {
                 } else {
                     if(gameModel.getShipsComplete()) {
                         view.displayPlayMode();
-                        gameModel.setState(GameState.PLAY);
+                        gameModel.setState(gameState.PLAY);
                     } else {
                         view.setLabel("Noch nicht spielbereit!");
                         view.highligthLabel();
@@ -69,14 +69,18 @@ public class GridController implements ActionListener {
                         view.highligthLabel();
                     } else {
                         gameModel.runGame(getX(string), getY(string));
-                        if(gameModel.getState() == GameState.PREPARING_GRID) {
+                        if(gameModel.getState() == gameState.PREPARING_GRID) {
                             counter = chosenLength - gameModel.getFieldCount();
                             view.setLabel("Gesetzte Felder: " +counter+ " von "+chosenLength);
+                            if(counter == chosenLength) {
+                                shipInCreation = false;
+                            }
                         }
                     }
                 } else {
                     view.setLabel("Wähle eine Schiffsgrösse!");
                     view.highligthLabel();
+                    chosenLength = 0;
                 }
             break;
         }

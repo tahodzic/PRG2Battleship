@@ -117,8 +117,4 @@ public class GameGrid {
         }
     }
     
-    public static void main(String[] args) {
-        
-    }
-    
 }

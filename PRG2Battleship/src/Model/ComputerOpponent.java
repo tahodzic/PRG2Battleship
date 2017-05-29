@@ -25,7 +25,6 @@ public class ComputerOpponent implements IOpponent{
     
     public ComputerOpponent(){
         oppGrid = new GameGrid(false);
-        
     }
 
     @Override
@@ -34,8 +33,9 @@ public class ComputerOpponent implements IOpponent{
         do{ 
             posX = (int) (Math.random()*(7)+1);
             posY = (int) (Math.random()*(7)+1); 
-            f_state= checkfield(g, posX, posY);    
-        }while(f_state!=MISSED && f_state!=HIT);  
+            f_state= checkfield(g, posX, posY);
+
+        }while(f_state==MISSED || f_state==HIT);  
         if(f_state==SHIP){
             treffer=1;
         }

@@ -51,7 +51,7 @@ public class GameModel extends Observable {
       playerOneTurn = true;
 
       state = gameState.SELECTING_OPPONENT;
-      playerOneTurn = new Random().nextBoolean();     
+      //playerOneTurn = new Random().nextBoolean();     
 
       //Initialize gameGrid
       
@@ -72,7 +72,7 @@ public class GameModel extends Observable {
     
     public void setStateToPlay(){
         this.state = gameState.PLAY;
-        compOpponent.oppGrid = playerOne.myGrid;
+        
         setChanged();
         //in update method user needs to be informed
         notifyObservers(compOpponent.oppGrid);     
@@ -149,13 +149,14 @@ public class GameModel extends Observable {
                         compOpponent.oppGrid.attackField(posX, posY);
                         playerOneTurn = false;
                         setChanged();
-                        notifyObservers(compOpponent.oppGrid);
-                    }
-                    else{
+                        notifyObservers(compOpponent.oppGrid);                        
                         compOpponent.attackField(playerOne.myGrid);
                         playerOneTurn = true;
                         setChanged();
                         notifyObservers(playerOne.myGrid);
+                    }
+                    else{
+
                         
                     }
                 }

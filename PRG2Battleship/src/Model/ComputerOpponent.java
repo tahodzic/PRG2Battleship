@@ -25,6 +25,7 @@ public class ComputerOpponent implements IOpponent{
     
     public ComputerOpponent(){
         oppGrid = new GameGrid(false);
+        
     }
 
     @Override

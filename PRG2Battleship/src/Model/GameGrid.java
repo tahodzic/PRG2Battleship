@@ -26,7 +26,7 @@ public class GameGrid {
         this.ships = new ArrayList<>();
         initGrid();
         initShips();
-    }
+    }  
     
     public void initGrid() {
         for(int i = 0; i < 7; i++) {

@@ -152,6 +152,9 @@ public class Grid extends JFrame implements Observer{
        int x, y;
        //If playerOne gamegrid
        if (grid.getPrimaryGrid()){
+           if(grid.getHasLost()){
+               setLabel("You lost");
+           }
             for(y = 0; y < 7; y++){
                  for(x = 0; x < 7; x++){
                      switch(grid.getField(x+1,y+1).getState()){            
@@ -173,6 +176,9 @@ public class Grid extends JFrame implements Observer{
        }
        //If opponent game grid
        else if (!grid.getPrimaryGrid()){
+        if(grid.getHasLost()){
+               setLabel("You won");
+           }
             for(y = 0; y < 7; y++){
                  for(x = 0; x < 7; x++){
                      switch(grid.getField(x+1,y+1).getState()){            

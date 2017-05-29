@@ -35,6 +35,7 @@ public class GameModel extends Observable {
     private boolean playerOneTurn = false;
     // private GameGrid gameGrid;
     private ArrayList<Ship> ships = new ArrayList<Ship>();
+    private ArrayList<Ship> oppShips = new ArrayList<Ship>();
     private Ship ship;
     private int shipLengthChosenByUser = 0;
     
@@ -155,7 +156,20 @@ public class GameModel extends Observable {
                         playerOneTurn = true;
                         setChanged();
                         notifyObservers(playerOne.myGrid);
-                        if(isDead()) state = gameState.FINISHED;
+                        if(isDead()) {
+                            state = gameState.FINISHED;
+                            playerOne.myGrid.setHasLost(true);
+                            setChanged();
+                            notifyObservers(playerOne.myGrid);
+                            
+                        }
+                        
+                        if(isOppDead()){
+                            state = gameState.FINISHED;
+                            compOpponent.oppGrid.setHasLost(true);
+                            setChanged();
+                            notifyObservers(compOpponent.oppGrid);
+                        }
                     }
                 }
 
@@ -167,6 +181,14 @@ public class GameModel extends Observable {
         }
     }
     
+    public boolean isOppDead(){
+        for(Ship s: oppShips){
+            if(s.isStillAlive()){
+                return false;
+            }
+        }
+        return true;
+    }
     public boolean isDead(){
         for(Ship s: ships){
             if(s.isStillAlive()){
@@ -184,6 +206,7 @@ public class GameModel extends Observable {
                 s = (getRandomShip(compOpponent.oppGrid, rand));  
             }while(!s.getFieldsSet());
             compOpponent.oppGrid.addShip(s);
+            oppShips.add(s);
         }
     }
     
